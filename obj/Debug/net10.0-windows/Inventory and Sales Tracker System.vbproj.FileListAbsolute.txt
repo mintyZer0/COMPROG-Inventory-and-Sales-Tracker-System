@@ -1,0 +1,18 @@
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\bin\Debug\net10.0-windows\Inventory and Sales Tracker System.exe
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\bin\Debug\net10.0-windows\Inventory and Sales Tracker System.deps.json
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\bin\Debug\net10.0-windows\Inventory and Sales Tracker System.runtimeconfig.json
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\bin\Debug\net10.0-windows\Inventory and Sales Tracker System.dll
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\bin\Debug\net10.0-windows\Inventory and Sales Tracker System.pdb
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory_and_Sales_Tracker_System.Login.resources
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory_and_Sales_Tracker_System.MainWindow.resources
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory and Sales Tracker System.vbproj.GenerateResource.cache
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory and Sales Tracker System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory and Sales Tracker System.AssemblyInfoInputs.cache
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory and Sales Tracker System.AssemblyInfo.vb
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory and Sales Tracker System.vbproj.CoreCompileInputs.cache
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory and Sales Tracker System.sourcelink.json
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory and Sales Tracker System.dll
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\refint\Inventory and Sales Tracker System.dll
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory and Sales Tracker System.pdb
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\Inventory and Sales Tracker System.genruntimeconfig.cache
+C:\Users\minty\source\repos\Inventory and Sales Tracker System\obj\Debug\net10.0-windows\ref\Inventory and Sales Tracker System.dll

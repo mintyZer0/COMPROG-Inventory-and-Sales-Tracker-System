@@ -1,9 +1,22 @@
 ﻿Public Class Login
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim username As String = "Lebron"
+        Dim password As String = "James"
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblUsername.Click
+    Private Function IsValidCredentials(username As String, password As String) As Boolean
+        Return username = "Lebron" AndAlso password = "James"
+    End Function
 
+    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+        Dim username As String = txtUsername.Text
+        Dim password As String = txtPassword.Text
+
+        If IsValidCredentials(username, password) Then
+            Me.DialogResult = DialogResult.OK
+            Me.Close()
+        Else
+            MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
 End Class

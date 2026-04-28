@@ -4,5 +4,8 @@
     <Compile Update="Login.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="MainWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

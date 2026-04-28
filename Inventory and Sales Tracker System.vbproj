@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
     <RootNamespace>Inventory_and_Sales_Tracker_System</RootNamespace>
-    <StartupObject>Sub Main</StartupObject>
+    <StartupObject>Inventory_and_Sales_Tracker_System.My.MyApplication</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
   </PropertyGroup>

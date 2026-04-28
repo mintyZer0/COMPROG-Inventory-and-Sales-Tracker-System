@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("Inventory and Sales Tracker System"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+006564fe68079e52b4444c4ba65654db6f51a5ab"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af671646793767d75e04478707b09365a1e64938"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("Inventory and Sales Tracker System"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("Inventory and Sales Tracker System"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _

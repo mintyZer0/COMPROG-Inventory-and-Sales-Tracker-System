@@ -9,14 +9,15 @@
     End Function
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        Dim username As String = txtUsername.Text
-        Dim password As String = txtPassword.Text
+        Dim username = txtUsername.Text
+        Dim password = txtPassword.Text
 
         If IsValidCredentials(username, password) Then
-            Me.DialogResult = DialogResult.OK
-            Me.Close()
+            DialogResult = DialogResult.OK
+            Close()
         Else
             MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
+
 End Class

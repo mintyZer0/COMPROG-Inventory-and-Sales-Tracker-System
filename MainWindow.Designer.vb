@@ -1,6 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainWindow
-    Inherits System.Windows.Forms.Form
+    Inherits MaterialSkin.Controls.MaterialForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -22,15 +22,121 @@ Partial Class MainWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        tbMainWindow = New MaterialSkin.Controls.MaterialTabControl()
+        tpDashboard = New TabPage()
+        Dashboard1 = New uc_Dashboard()
+        tpManageInventory = New TabPage()
+        tpPointOfSale = New TabPage()
+        tpReports = New TabPage()
+        dwrSidebar = New MaterialSkin.Controls.MaterialDrawer()
+        tbMainWindow.SuspendLayout()
+        tpDashboard.SuspendLayout()
         SuspendLayout()
+        ' 
+        ' tbMainWindow
+        ' 
+        tbMainWindow.Controls.Add(tpDashboard)
+        tbMainWindow.Controls.Add(tpManageInventory)
+        tbMainWindow.Controls.Add(tpPointOfSale)
+        tbMainWindow.Controls.Add(tpReports)
+        tbMainWindow.Depth = 0
+        tbMainWindow.Dock = DockStyle.Fill
+        tbMainWindow.ImeMode = ImeMode.Disable
+        tbMainWindow.Location = New Point(154, 64)
+        tbMainWindow.MouseState = MaterialSkin.MouseState.HOVER
+        tbMainWindow.Multiline = True
+        tbMainWindow.Name = "tbMainWindow"
+        tbMainWindow.SelectedIndex = 0
+        tbMainWindow.Size = New Size(643, 383)
+        tbMainWindow.TabIndex = 4
+        ' 
+        ' tpDashboard
+        ' 
+        tpDashboard.Controls.Add(Dashboard1)
+        tpDashboard.Location = New Point(4, 24)
+        tpDashboard.Name = "tpDashboard"
+        tpDashboard.Padding = New Padding(3)
+        tpDashboard.Size = New Size(635, 355)
+        tpDashboard.TabIndex = 0
+        tpDashboard.Text = "Dashboard"
+        tpDashboard.UseVisualStyleBackColor = True
+        ' 
+        ' Dashboard1
+        ' 
+        Dashboard1.Dock = DockStyle.Fill
+        Dashboard1.Location = New Point(3, 3)
+        Dashboard1.Name = "Dashboard1"
+        Dashboard1.Size = New Size(629, 349)
+        Dashboard1.TabIndex = 0
+        ' 
+        ' tpManageInventory
+        ' 
+        tpManageInventory.Location = New Point(4, 24)
+        tpManageInventory.Name = "tpManageInventory"
+        tpManageInventory.Padding = New Padding(3)
+        tpManageInventory.Size = New Size(786, 355)
+        tpManageInventory.TabIndex = 1
+        tpManageInventory.Text = "Inventory"
+        tpManageInventory.UseVisualStyleBackColor = True
+        ' 
+        ' tpPointOfSale
+        ' 
+        tpPointOfSale.Location = New Point(4, 24)
+        tpPointOfSale.Name = "tpPointOfSale"
+        tpPointOfSale.Padding = New Padding(3)
+        tpPointOfSale.Size = New Size(786, 355)
+        tpPointOfSale.TabIndex = 2
+        tpPointOfSale.Text = "POS"
+        tpPointOfSale.UseVisualStyleBackColor = True
+        ' 
+        ' tpReports
+        ' 
+        tpReports.Location = New Point(4, 24)
+        tpReports.Name = "tpReports"
+        tpReports.Padding = New Padding(3)
+        tpReports.Size = New Size(786, 355)
+        tpReports.TabIndex = 3
+        tpReports.Text = "Reports"
+        tpReports.UseVisualStyleBackColor = True
+        ' 
+        ' dwrSidebar
+        ' 
+        dwrSidebar.AutoHide = False
+        dwrSidebar.AutoShow = False
+        dwrSidebar.BackgroundWithAccent = False
+        dwrSidebar.BaseTabControl = tbMainWindow
+        dwrSidebar.Depth = 0
+        dwrSidebar.Dock = DockStyle.Left
+        dwrSidebar.HighlightWithAccent = True
+        dwrSidebar.IndicatorWidth = 0
+        dwrSidebar.IsOpen = True
+        dwrSidebar.Location = New Point(3, 64)
+        dwrSidebar.MouseState = MaterialSkin.MouseState.HOVER
+        dwrSidebar.Name = "dwrSidebar"
+        dwrSidebar.ShowIconsWhenHidden = True
+        dwrSidebar.Size = New Size(151, 383)
+        dwrSidebar.TabIndex = 3
+        dwrSidebar.Text = "MaterialDrawer1"
+        dwrSidebar.UseColors = False
         ' 
         ' MainWindow
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(tbMainWindow)
+        Controls.Add(dwrSidebar)
         Name = "MainWindow"
-        Text = "MainWindow"
+        Text = "Dashboard"
+        tbMainWindow.ResumeLayout(False)
+        tpDashboard.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
+    Friend WithEvents tbMainWindow As MaterialSkin.Controls.MaterialTabControl
+    Friend WithEvents tpDashboard As TabPage
+    Friend WithEvents tpManageInventory As TabPage
+    Friend WithEvents tpPointOfSale As TabPage
+    Friend WithEvents tpReports As TabPage
+    Friend WithEvents dwrSidebar As MaterialSkin.Controls.MaterialDrawer
+    Friend WithEvents Dashboard1 As uc_Dashboard
 End Class

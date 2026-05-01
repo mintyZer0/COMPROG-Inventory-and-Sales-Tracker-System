@@ -43,7 +43,7 @@ Partial Class uc_ManageInventory
         btnAddProduct.Depth = 0
         btnAddProduct.HighEmphasis = True
         btnAddProduct.Icon = Nothing
-        btnAddProduct.Location = New Point(474, 34)
+        btnAddProduct.Location = New Point(416, 34)
         btnAddProduct.Margin = New Padding(4, 6, 4, 6)
         btnAddProduct.MouseState = MaterialSkin.MouseState.HOVER
         btnAddProduct.Name = "btnAddProduct"
@@ -60,7 +60,7 @@ Partial Class uc_ManageInventory
         txtProdName.AnimateReadOnly = False
         txtProdName.BorderStyle = BorderStyle.None
         txtProdName.Depth = 0
-        txtProdName.Font = New Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel)
+        txtProdName.Font = New Font("Roboto", 16.0F, FontStyle.Regular, GraphicsUnit.Pixel)
         txtProdName.LeadingIcon = Nothing
         txtProdName.Location = New Point(42, 34)
         txtProdName.MaxLength = 50
@@ -77,7 +77,7 @@ Partial Class uc_ManageInventory
         txtPrice.AnimateReadOnly = False
         txtPrice.BorderStyle = BorderStyle.None
         txtPrice.Depth = 0
-        txtPrice.Font = New Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel)
+        txtPrice.Font = New Font("Roboto", 16.0F, FontStyle.Regular, GraphicsUnit.Pixel)
         txtPrice.LeadingIcon = Nothing
         txtPrice.Location = New Point(175, 34)
         txtPrice.MaxLength = 50
@@ -94,7 +94,7 @@ Partial Class uc_ManageInventory
         txtStock.AnimateReadOnly = False
         txtStock.BorderStyle = BorderStyle.None
         txtStock.Depth = 0
-        txtStock.Font = New Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel)
+        txtStock.Font = New Font("Roboto", 16.0F, FontStyle.Regular, GraphicsUnit.Pixel)
         txtStock.LeadingIcon = Nothing
         txtStock.Location = New Point(303, 34)
         txtStock.MaxLength = 50
@@ -110,7 +110,7 @@ Partial Class uc_ManageInventory
         ' 
         MaterialLabel1.AutoSize = True
         MaterialLabel1.Depth = 0
-        MaterialLabel1.Font = New Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel)
+        MaterialLabel1.Font = New Font("Roboto", 14.0F, FontStyle.Regular, GraphicsUnit.Pixel)
         MaterialLabel1.Location = New Point(17, 12)
         MaterialLabel1.MouseState = MaterialSkin.MouseState.HOVER
         MaterialLabel1.Name = "MaterialLabel1"
@@ -122,7 +122,7 @@ Partial Class uc_ManageInventory
         ' 
         MaterialLabel2.AutoSize = True
         MaterialLabel2.Depth = 0
-        MaterialLabel2.Font = New Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel)
+        MaterialLabel2.Font = New Font("Roboto", 14.0F, FontStyle.Regular, GraphicsUnit.Pixel)
         MaterialLabel2.Location = New Point(149, 12)
         MaterialLabel2.MouseState = MaterialSkin.MouseState.HOVER
         MaterialLabel2.Name = "MaterialLabel2"
@@ -134,7 +134,7 @@ Partial Class uc_ManageInventory
         ' 
         MaterialLabel3.AutoSize = True
         MaterialLabel3.Depth = 0
-        MaterialLabel3.Font = New Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel)
+        MaterialLabel3.Font = New Font("Roboto", 14.0F, FontStyle.Regular, GraphicsUnit.Pixel)
         MaterialLabel3.Location = New Point(284, 12)
         MaterialLabel3.MouseState = MaterialSkin.MouseState.HOVER
         MaterialLabel3.Name = "MaterialLabel3"
@@ -149,7 +149,7 @@ Partial Class uc_ManageInventory
         btnEdit.Depth = 0
         btnEdit.HighEmphasis = True
         btnEdit.Icon = Nothing
-        btnEdit.Location = New Point(502, 111)
+        btnEdit.Location = New Point(473, 111)
         btnEdit.Margin = New Padding(4, 6, 4, 6)
         btnEdit.MouseState = MaterialSkin.MouseState.HOVER
         btnEdit.Name = "btnEdit"
@@ -184,7 +184,7 @@ Partial Class uc_ManageInventory
         ' 
         MaterialLabel4.AutoSize = True
         MaterialLabel4.Depth = 0
-        MaterialLabel4.Font = New Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel)
+        MaterialLabel4.Font = New Font("Roboto", 14.0F, FontStyle.Regular, GraphicsUnit.Pixel)
         MaterialLabel4.Location = New Point(17, 87)
         MaterialLabel4.MouseState = MaterialSkin.MouseState.HOVER
         MaterialLabel4.Name = "MaterialLabel4"
@@ -197,7 +197,7 @@ Partial Class uc_ManageInventory
         txtSearch.AnimateReadOnly = False
         txtSearch.BorderStyle = BorderStyle.None
         txtSearch.Depth = 0
-        txtSearch.Font = New Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel)
+        txtSearch.Font = New Font("Roboto", 16.0F, FontStyle.Regular, GraphicsUnit.Pixel)
         txtSearch.LeadingIcon = Nothing
         txtSearch.Location = New Point(42, 111)
         txtSearch.MaxLength = 50
@@ -211,14 +211,15 @@ Partial Class uc_ManageInventory
         ' 
         ' InventoryDataGrid
         ' 
-        InventoryDataGrid.Location = New Point(28, 167)
+        InventoryDataGrid.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        InventoryDataGrid.Location = New Point(3, 189)
         InventoryDataGrid.Name = "InventoryDataGrid"
-        InventoryDataGrid.Size = New Size(509, 176)
+        InventoryDataGrid.Size = New Size(630, 173)
         InventoryDataGrid.TabIndex = 11
         ' 
         ' uc_ManageInventory
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(InventoryDataGrid)
         Controls.Add(txtSearch)

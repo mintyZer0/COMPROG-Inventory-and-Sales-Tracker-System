@@ -10,7 +10,7 @@
         If txtNewProdName.Text.Trim() = "" OrElse Not IsNumeric(txtNewPrice.Text) OrElse Val(txtNewPrice.Text) <= 0 OrElse Not IsNumeric(txtNewStock.Text) OrElse Val(txtNewStock.Text) < 0 Then
             MsgBox("Please fill in the required fields before finalizing edit.")
         End If
-        Database.UpdateProduct(editIndex, txtNewPrice.Text, txtNewPrice.Text, txtNewStock.Text)
+        Database.UpdateProduct(editIndex, txtNewProdName.Text, txtNewPrice.Text, txtNewStock.Text)
         Me.Close()
     End Sub
 End Class

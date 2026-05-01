@@ -22,4 +22,13 @@
         lblTotalRevenue.Text = "₱" & Database.GetTotalRevenue().ToString("F2")
         lblProductsSold.Text = Database.GetTotalProductsSold().ToString()
     End Sub
+
+    Private Sub MaterialCard3_Paint(sender As Object, e As PaintEventArgs) Handles MaterialCard3.Paint
+
+    End Sub
+
+    Private Sub uc_Dashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
 End Class

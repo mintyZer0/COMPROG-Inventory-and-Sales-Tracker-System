@@ -1,4 +1,6 @@
-﻿Public Class InventorySystem
+﻿Imports System.Net.Http.Headers
+
+Public Class InventorySystem
     ' Parallel Arrays (Max 100 items)
     Private productNames(99) As String
     Private productPrices(99) As Double
@@ -6,9 +8,21 @@
     Private soldCounts(99) As Integer
     Private productCount As Integer = 0
 
+    Public Function GetProductName(prodNameIndex As Integer) As String
+        Return productNames(prodNameIndex)
+    End Function
+
+    Public Function GetProductPrice(prodPriceIndex As Integer) As Double
+        Return productPrices(prodPriceIndex)
+    End Function
+    Public Function GetProductStock(prodStockIndex As Integer) As Integer
+        Return productStocks(prodStockIndex)
+    End Function
+
     Public Function GetProductCount() As Integer
         Return productCount
     End Function
+
 
     Public Function GetLowStockCount() As Integer
         Dim lowStockCount As Integer = 0
@@ -37,6 +51,14 @@
             productCount += 1
         Else
             MsgBox("Inventory Full!")
+        End If
+    End Sub
+
+    Public Sub UpdateProduct(index As Integer, newProdName As String, newPrice As Double, newStock As Integer)
+        If index >= 0 AndAlso index < productCount AndAlso newProdName <> "" AndAlso newPrice > 0 AndAlso newStock >= 0 Then
+            productNames(index) = newProdName
+            productPrices(index) = newPrice
+            productStocks(index) = newStock
         End If
     End Sub
 
@@ -69,5 +91,75 @@
         Next
         Return total
     End Function
+
+    'Sort Algo
+    'babol sort 
+    Public Sub Sort(columnIndex As Integer, ascend As Boolean)
+        Dim swapped As Boolean
+        For i As Integer = 0 To productCount - 2
+            swapped = False
+
+            For j As Integer = 0 To productCount - 2 - i
+                Dim swapperToggle = False
+
+                Select Case columnIndex
+                    Case 1
+                        If ascend Then
+                            If productNames(j).CompareTo(productNames(j + 1)) > 0 Then
+                                swapperToggle = True
+                            End If
+                        Else
+                            If productNames(j).CompareTo(productNames(j + 1)) < 0 Then
+                                swapperToggle = True
+                            End If
+                        End If
+                    Case 2
+                        If ascend Then
+                            If productPrices(j) > productPrices(j + 1) Then
+                                swapperToggle = True
+                            End If
+                        Else
+                            If productPrices(j) < productPrices(j + 1) Then
+                                swapperToggle = True
+                            End If
+                        End If
+                    Case 3
+                        If ascend Then
+                            If productStocks(j) > productStocks(j + 1) Then
+                                swapperToggle = True
+                            End If
+                        Else
+                            If productStocks(j) < productStocks(j + 1) Then
+                                swapperToggle = True
+                            End If
+                        End If
+
+                End Select
+                If swapperToggle Then
+                    SwapAll(j, j + 1)
+                    swapped = True
+                End If
+            Next
+            If Not swapped Then
+                Exit For
+            End If
+        Next
+    End Sub
+    Public Sub SwapAll(firstIndex As Integer, secondIndex As Integer)
+        'Swap names
+        Dim tempName = productNames(firstIndex)
+        productNames(firstIndex) = productNames(secondIndex)
+        productNames(secondIndex) = tempName
+
+        'Swap Prices
+        Dim tempPrice = productPrices(firstIndex)
+        productPrices(firstIndex) = productPrices(secondIndex)
+        productPrices(secondIndex) = tempPrice
+
+        'Swap Stock Quantity
+        Dim tempQty = productStocks(firstIndex)
+        productStocks(firstIndex) = productStocks(secondIndex)
+        productStocks(secondIndex) = tempQty
+    End Sub
 
 End Class

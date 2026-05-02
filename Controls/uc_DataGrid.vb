@@ -41,7 +41,7 @@ Public Class uc_DataGrid
 
     Public Sub SearchList(searched As String)
         DataGrid.Items.Clear()
-        Dim word As String = searched.ToLower()
+        Dim word As String = searched
 
         For i As Integer = 0 To Database.GetProductCount() - 1
             Dim productName As String = Database.GetProductName(i).ToLower()

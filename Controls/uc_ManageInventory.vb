@@ -1,4 +1,7 @@
 ﻿Public Class uc_ManageInventory
+    Public Sub Refreshdata()
+        InventoryDataGrid.RefreshList()
+    End Sub
     Private Sub btnAddProduct_Click(sender As Object, e As EventArgs) Handles btnAddProduct.Click
         If txtProdName.Text.Trim() = "" Or Val(txtPrice.Text) <= 0 Or Val(txtStock.Text) <= 0 Then
             Return

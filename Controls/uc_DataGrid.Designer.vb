@@ -38,7 +38,6 @@ Partial Class uc_DataGrid
         DataGrid.Depth = 0
         DataGrid.Dock = DockStyle.Fill
         DataGrid.FullRowSelect = True
-        DataGrid.GridLines = True
         DataGrid.Location = New Point(0, 0)
         DataGrid.MinimumSize = New Size(200, 100)
         DataGrid.MouseLocation = New Point(-1, -1)

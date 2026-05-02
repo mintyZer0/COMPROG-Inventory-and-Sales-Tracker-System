@@ -15,7 +15,7 @@
             InventoryDataGrid.RefreshList()
             Return
         Else
-            InventoryDataGrid.SearchList(txtSearch.Text.Trim().ToLower())
+            InventoryDataGrid.SearchList(txtSearch.Text.Trim())
         End If
     End Sub
 

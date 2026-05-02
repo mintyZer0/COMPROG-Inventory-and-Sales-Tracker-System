@@ -28,11 +28,13 @@ Partial Class MainWindow
         tpManageInventory = New TabPage()
         Uc_ManageInventory1 = New uc_ManageInventory()
         tpPointOfSale = New TabPage()
+        Uc_pOfSales1 = New uc_POfSales()
         tpReports = New TabPage()
         dwrSidebar = New MaterialSkin.Controls.MaterialDrawer()
         tbMainWindow.SuspendLayout()
         tpDashboard.SuspendLayout()
         tpManageInventory.SuspendLayout()
+        tpPointOfSale.SuspendLayout()
         SuspendLayout()
         ' 
         ' tbMainWindow
@@ -93,6 +95,7 @@ Partial Class MainWindow
         ' 
         ' tpPointOfSale
         ' 
+        tpPointOfSale.Controls.Add(Uc_pOfSales1)
         tpPointOfSale.Location = New Point(4, 24)
         tpPointOfSale.Name = "tpPointOfSale"
         tpPointOfSale.Padding = New Padding(3)
@@ -100,6 +103,13 @@ Partial Class MainWindow
         tpPointOfSale.TabIndex = 2
         tpPointOfSale.Text = "POS"
         tpPointOfSale.UseVisualStyleBackColor = True
+        ' 
+        ' Uc_pOfSales1
+        ' 
+        Uc_pOfSales1.Location = New Point(-4, 0)
+        Uc_pOfSales1.Name = "Uc_pOfSales1"
+        Uc_pOfSales1.Size = New Size(640, 359)
+        Uc_pOfSales1.TabIndex = 0
         ' 
         ' tpReports
         ' 
@@ -133,7 +143,7 @@ Partial Class MainWindow
         ' 
         ' MainWindow
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
         Controls.Add(tbMainWindow)
@@ -143,6 +153,7 @@ Partial Class MainWindow
         tbMainWindow.ResumeLayout(False)
         tpDashboard.ResumeLayout(False)
         tpManageInventory.ResumeLayout(False)
+        tpPointOfSale.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
     Friend WithEvents tbMainWindow As MaterialSkin.Controls.MaterialTabControl
@@ -153,4 +164,5 @@ Partial Class MainWindow
     Friend WithEvents dwrSidebar As MaterialSkin.Controls.MaterialDrawer
     Friend WithEvents Dashboard1 As uc_Dashboard
     Friend WithEvents Uc_ManageInventory1 As uc_ManageInventory
+    Friend WithEvents Uc_pOfSales1 As uc_POfSales
 End Class

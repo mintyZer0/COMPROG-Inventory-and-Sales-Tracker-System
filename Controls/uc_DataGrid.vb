@@ -4,6 +4,19 @@ Public Class uc_DataGrid
     Private nameToggle As Boolean = True
     Private priceToggle As Boolean = True
     Private stockToggle As Boolean = True
+    Private Sub uc_DataGrid_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        RefreshList()
+    End Sub
+
+    Private Sub uc_DataGrid_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
+        RefreshList()
+    End Sub
+
+    Public ReadOnly Property SelectedItems As ListView.SelectedListViewItemCollection
+        Get
+            Return DataGrid.SelectedItems
+        End Get
+    End Property
 
     Public Sub RefreshList()
         DataGrid.Items.Clear()

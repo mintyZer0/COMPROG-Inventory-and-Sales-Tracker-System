@@ -69,6 +69,6 @@ Public Class uc_DataGrid
                 DataGrid.Items.Add(row)
             End If
         Next
-
+        'More like Piece of shit
     End Sub
 End Class

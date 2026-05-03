@@ -19,11 +19,13 @@ Public Class InventorySystem
         Return productStocks(prodStockIndex)
     End Function
 
+    Public Function GetSoldCount(soldCountIndex As Integer) As Integer
+        Return soldCounts(soldCountIndex)
+    End Function
+
     Public Function GetProductCount() As Integer
         Return productCount
     End Function
-
-
     Public Function GetLowStockCount() As Integer
         Dim lowStockCount As Integer = 0
         For i As Integer = 0 To productCount - 1
@@ -40,6 +42,20 @@ Public Class InventorySystem
             totalSold += soldCounts(i)
         Next
         Return totalSold
+    End Function
+
+    Public Function GetBestSellingItem() As String
+        Dim bestSellerIndex As Integer = 0
+        For i As Integer = 1 To productCount - 1
+            If soldCounts(i) > soldCounts(bestSellerIndex) Then
+                bestSellerIndex = i
+            End If
+        Next
+        Return productNames(bestSellerIndex)
+    End Function
+
+    Public Function IsLowStock(index As Integer) As Boolean
+        Return productStocks(index) < 5
     End Function
 
     Public Sub AddNewProduct(name As String, price As Double, initialStock As Integer)

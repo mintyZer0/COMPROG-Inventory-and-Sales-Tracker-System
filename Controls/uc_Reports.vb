@@ -62,4 +62,8 @@
             SetTotalRevenue()
         End If
     End Sub
+
+    Private Sub lblTotalRevenue_Click(sender As Object, e As EventArgs) Handles lblTotalRevenue.Click
+
+    End Sub
 End Class

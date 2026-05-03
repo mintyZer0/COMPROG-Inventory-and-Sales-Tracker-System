@@ -8,10 +8,10 @@ Public Class uc_POfSales
     Private qtySpinner As New NumericUpDown()
 
     Private Sub uc_POfsales_load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If MaterialListView1.Columns.Count = 0 Then
-            MaterialListView1.Columns.Add("Name", 120)
-            MaterialListView1.Columns.Add("Price", 100)
-            MaterialListView1.Columns.Add("Quantity", 50)
+        If lvCurrentOrder.Columns.Count = 0 Then
+            lvCurrentOrder.Columns.Add("Name", 120)
+            lvCurrentOrder.Columns.Add("Price", 100)
+            lvCurrentOrder.Columns.Add("Quantity", 50)
         End If
 
         qtySpinner.Visible = False
@@ -22,7 +22,7 @@ Public Class uc_POfSales
 
         AddHandler pos_DataGrid.DataGrid.SelectedIndexChanged, AddressOf UpdateOrderList
         AddHandler qtySpinner.ValueChanged, AddressOf qtySpinner_ValChange
-        AddHandler qtySpinner.KeyDown, AddressOf qtySpinner_KeyDown
+        AddHandler qtySpinner.KeyDown, AddressOf QtySpinner_KeyDown
         AddHandler qtySpinner.Leave, AddressOf qtySpinner_Leave
     End Sub
 
@@ -52,7 +52,7 @@ Public Class uc_POfSales
     End Sub
 
     Private Sub UpdateOrderList(sender As Object, e As EventArgs)
-        MaterialListView1.Items.Clear()
+        lvCurrentOrder.Items.Clear()
         qtySpinner.Visible = False
 
         For Each selectedItem As ListViewItem In pos_DataGrid.DataGrid.SelectedItems
@@ -66,7 +66,7 @@ Public Class uc_POfSales
             orderRow.SubItems.Add(selectedQuantities(index).ToString)
             orderRow.Tag = index
 
-            MaterialListView1.Items.Add(orderRow)
+            lvCurrentOrder.Items.Add(orderRow)
         Next
     End Sub
 
@@ -80,13 +80,13 @@ Public Class uc_POfSales
         End If
     End Sub
 
-    Private Sub MaterialListView_MouseUp(sender As Object, e As MouseEventArgs) Handles MaterialListView1.MouseUp
-        Dim item = MaterialListView1.GetItemAt(e.X, e.Y)
+    Private Sub MaterialListView_MouseUp(sender As Object, e As MouseEventArgs) Handles lvCurrentOrder.MouseUp
+        Dim item = lvCurrentOrder.GetItemAt(e.X, e.Y)
 
         If item IsNot Nothing Then
             Dim Rect = item.SubItems(2).Bounds
 
-            qtySpinner.Bounds = New Rectangle(MaterialListView1.Left + Rect.X, MaterialListView1.Top + Rect.Y, Rect.Width, Rect.Height)
+            qtySpinner.Bounds = New Rectangle(lvCurrentOrder.Left + Rect.X, lvCurrentOrder.Top + Rect.Y, Rect.Width, Rect.Height)
             qtySpinner.Value = Decimal.Parse(item.SubItems(2).Text)
             qtySpinner.Tag = item
             qtySpinner.Visible = True
@@ -99,7 +99,7 @@ Public Class uc_POfSales
     Private Sub MaterialButton1_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
         Dim total As Double = 0.0
 
-        For Each item As ListViewItem In MaterialListView1.Items
+        For Each item As ListViewItem In lvCurrentOrder.Items
             Dim index As Integer = CInt(item.Tag)
             Dim qty As Integer = 0
 
@@ -110,7 +110,7 @@ Public Class uc_POfSales
             End If
         Next
 
-        POS_Total.Text = total.ToString("F2")
+        lblPOSTotal.Text = total.ToString("F2")
         pos_DataGrid.RefreshList()
 
         Dim mainForm = DirectCast(Me.FindForm(), MainWindow)

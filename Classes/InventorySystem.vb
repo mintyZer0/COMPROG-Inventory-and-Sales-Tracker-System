@@ -64,7 +64,7 @@ Public Class InventorySystem
 
         For i As Integer = 0 To productCount - 2
             For j As Integer = 0 To productCount - 2 - i
-                If soldCounts(j) > soldCounts(j + 1) Then
+                If soldCounts(indices(j)) > soldCounts(indices(j + 1)) Then
                     Dim temp = indices(j + 1)
                     indices(j + 1) = indices(j)
                     indices(j) = temp
@@ -72,6 +72,17 @@ Public Class InventorySystem
             Next
         Next
         Return indices
+    End Function
+
+    Public Function GetNoStockIndices() As Integer()
+        Dim noStockIndices(productCount - 1) As Integer
+        For i As Integer = 0 To productCount - 1
+            If GetProductStock(i) = 0 Then
+                noStockIndices(i) = i
+            End If
+        Next
+
+        Return noStockIndices
     End Function
 
     Public Function IsLowStock(index As Integer) As Boolean

@@ -35,7 +35,7 @@ Partial Class uc_POfSales
         ' 
         MaterialLabel1.Depth = 0
         MaterialLabel1.FlatStyle = FlatStyle.System
-        MaterialLabel1.Font = New Font("Roboto", 34.0F, FontStyle.Bold, GraphicsUnit.Pixel)
+        MaterialLabel1.Font = New Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel)
         MaterialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H4
         MaterialLabel1.Location = New Point(378, 9)
         MaterialLabel1.MouseState = MaterialSkin.MouseState.HOVER
@@ -94,7 +94,7 @@ Partial Class uc_POfSales
         ' 
         MaterialLabel2.AutoSize = True
         MaterialLabel2.Depth = 0
-        MaterialLabel2.Font = New Font("Roboto", 24.0F, FontStyle.Bold, GraphicsUnit.Pixel)
+        MaterialLabel2.Font = New Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Pixel)
         MaterialLabel2.FontType = MaterialSkin.MaterialSkinManager.fontType.H5
         MaterialLabel2.Location = New Point(408, 266)
         MaterialLabel2.MouseState = MaterialSkin.MouseState.HOVER
@@ -107,7 +107,7 @@ Partial Class uc_POfSales
         ' 
         POS_Total.AutoSize = True
         POS_Total.Depth = 0
-        POS_Total.Font = New Font("Roboto", 24.0F, FontStyle.Bold, GraphicsUnit.Pixel)
+        POS_Total.Font = New Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Pixel)
         POS_Total.FontType = MaterialSkin.MaterialSkinManager.fontType.H5
         POS_Total.Location = New Point(495, 266)
         POS_Total.MouseState = MaterialSkin.MouseState.HOVER
@@ -118,7 +118,7 @@ Partial Class uc_POfSales
         ' 
         ' uc_POfSales
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(POS_Total)
         Controls.Add(MaterialLabel2)

@@ -30,11 +30,13 @@ Partial Class MainWindow
         tpPointOfSale = New TabPage()
         Uc_pOfSales1 = New uc_POfSales()
         tpReports = New TabPage()
+        Uc_Reports = New uc_Reports()
         dwrSidebar = New MaterialSkin.Controls.MaterialDrawer()
         tbMainWindow.SuspendLayout()
         tpDashboard.SuspendLayout()
         tpManageInventory.SuspendLayout()
         tpPointOfSale.SuspendLayout()
+        tpReports.SuspendLayout()
         SuspendLayout()
         ' 
         ' tbMainWindow
@@ -51,7 +53,7 @@ Partial Class MainWindow
         tbMainWindow.Multiline = True
         tbMainWindow.Name = "tbMainWindow"
         tbMainWindow.SelectedIndex = 0
-        tbMainWindow.Size = New Size(643, 383)
+        tbMainWindow.Size = New Size(755, 500)
         tbMainWindow.TabIndex = 4
         ' 
         ' tpDashboard
@@ -60,7 +62,7 @@ Partial Class MainWindow
         tpDashboard.Location = New Point(4, 24)
         tpDashboard.Name = "tpDashboard"
         tpDashboard.Padding = New Padding(3)
-        tpDashboard.Size = New Size(635, 355)
+        tpDashboard.Size = New Size(768, 490)
         tpDashboard.TabIndex = 0
         tpDashboard.Text = "Dashboard"
         tpDashboard.UseVisualStyleBackColor = True
@@ -71,7 +73,7 @@ Partial Class MainWindow
         Dashboard1.Dock = DockStyle.Fill
         Dashboard1.Location = New Point(3, 3)
         Dashboard1.Name = "Dashboard1"
-        Dashboard1.Size = New Size(629, 349)
+        Dashboard1.Size = New Size(762, 484)
         Dashboard1.TabIndex = 0
         ' 
         ' tpManageInventory
@@ -80,7 +82,7 @@ Partial Class MainWindow
         tpManageInventory.Location = New Point(4, 24)
         tpManageInventory.Name = "tpManageInventory"
         tpManageInventory.Padding = New Padding(3)
-        tpManageInventory.Size = New Size(635, 355)
+        tpManageInventory.Size = New Size(768, 490)
         tpManageInventory.TabIndex = 1
         tpManageInventory.Text = "Inventory"
         tpManageInventory.UseVisualStyleBackColor = True
@@ -90,7 +92,7 @@ Partial Class MainWindow
         Uc_ManageInventory1.Dock = DockStyle.Fill
         Uc_ManageInventory1.Location = New Point(3, 3)
         Uc_ManageInventory1.Name = "Uc_ManageInventory1"
-        Uc_ManageInventory1.Size = New Size(629, 349)
+        Uc_ManageInventory1.Size = New Size(762, 484)
         Uc_ManageInventory1.TabIndex = 0
         ' 
         ' tpPointOfSale
@@ -99,27 +101,37 @@ Partial Class MainWindow
         tpPointOfSale.Location = New Point(4, 24)
         tpPointOfSale.Name = "tpPointOfSale"
         tpPointOfSale.Padding = New Padding(3)
-        tpPointOfSale.Size = New Size(635, 355)
+        tpPointOfSale.Size = New Size(768, 490)
         tpPointOfSale.TabIndex = 2
         tpPointOfSale.Text = "POS"
         tpPointOfSale.UseVisualStyleBackColor = True
         ' 
         ' Uc_pOfSales1
         ' 
-        Uc_pOfSales1.Location = New Point(-4, 0)
+        Uc_pOfSales1.Dock = DockStyle.Fill
+        Uc_pOfSales1.Location = New Point(3, 3)
         Uc_pOfSales1.Name = "Uc_pOfSales1"
-        Uc_pOfSales1.Size = New Size(640, 359)
+        Uc_pOfSales1.Size = New Size(762, 484)
         Uc_pOfSales1.TabIndex = 0
         ' 
         ' tpReports
         ' 
+        tpReports.Controls.Add(Uc_Reports)
         tpReports.Location = New Point(4, 24)
         tpReports.Name = "tpReports"
         tpReports.Padding = New Padding(3)
-        tpReports.Size = New Size(635, 355)
+        tpReports.Size = New Size(747, 472)
         tpReports.TabIndex = 3
         tpReports.Text = "Reports"
         tpReports.UseVisualStyleBackColor = True
+        ' 
+        ' Uc_Reports
+        ' 
+        Uc_Reports.Dock = DockStyle.Fill
+        Uc_Reports.Location = New Point(3, 3)
+        Uc_Reports.Name = "Uc_Reports"
+        Uc_Reports.Size = New Size(741, 466)
+        Uc_Reports.TabIndex = 0
         ' 
         ' dwrSidebar
         ' 
@@ -136,7 +148,7 @@ Partial Class MainWindow
         dwrSidebar.MouseState = MaterialSkin.MouseState.HOVER
         dwrSidebar.Name = "dwrSidebar"
         dwrSidebar.ShowIconsWhenHidden = True
-        dwrSidebar.Size = New Size(151, 383)
+        dwrSidebar.Size = New Size(151, 500)
         dwrSidebar.TabIndex = 3
         dwrSidebar.Text = "MaterialDrawer1"
         dwrSidebar.UseColors = False
@@ -145,15 +157,18 @@ Partial Class MainWindow
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        AutoSize = True
+        ClientSize = New Size(912, 567)
         Controls.Add(tbMainWindow)
         Controls.Add(dwrSidebar)
+        MinimumSize = New Size(912, 567)
         Name = "MainWindow"
         Text = "Dashboard"
         tbMainWindow.ResumeLayout(False)
         tpDashboard.ResumeLayout(False)
         tpManageInventory.ResumeLayout(False)
         tpPointOfSale.ResumeLayout(False)
+        tpReports.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
     Friend WithEvents tbMainWindow As MaterialSkin.Controls.MaterialTabControl
@@ -165,4 +180,5 @@ Partial Class MainWindow
     Friend WithEvents Dashboard1 As uc_Dashboard
     Friend WithEvents Uc_ManageInventory1 As uc_ManageInventory
     Friend WithEvents Uc_pOfSales1 As uc_POfSales
+    Friend WithEvents Uc_Reports As uc_Reports
 End Class

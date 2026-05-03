@@ -6,10 +6,26 @@ Public Class uc_DataGrid
     Private stockToggle As Boolean = True
     Private Sub uc_DataGrid_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RefreshList()
+        ResizeColumns()
+    End Sub
+
+    Public Sub ResizeColumns()
+        If DataGrid.Columns.Count > 0 Then
+            Dim totalWidth As Integer = DataGrid.ClientSize.Width
+            DataGrid.Columns(0).Width = totalWidth * 0.1
+            DataGrid.Columns(1).Width = totalWidth * 0.4
+            DataGrid.Columns(2).Width = totalWidth * 0.25
+            DataGrid.Columns(3).Width = totalWidth * 0.25
+        End If
+    End Sub
+
+    Private Sub uc_DataGrid_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        ResizeColumns()
     End Sub
 
     Private Sub uc_DataGrid_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
         RefreshList()
+        ResizeColumns()
     End Sub
 
     Public ReadOnly Property SelectedItems As ListView.SelectedListViewItemCollection

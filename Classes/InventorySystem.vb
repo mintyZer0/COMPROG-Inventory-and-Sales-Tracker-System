@@ -55,7 +55,28 @@ Public Class InventorySystem
         Return productNames(bestSellerIndex)
     End Function
 
-    Public Function GetBestSellingIndices() As Integer()
+    'Descending order
+    Public Function GetMostSoldIndices() As Integer()
+        Dim indices(productCount - 1) As Integer
+
+        For i As Integer = 0 To productCount - 1
+            indices(i) = i
+        Next
+
+        For i As Integer = 0 To productCount - 2
+            For j As Integer = 0 To productCount - 2 - i
+                If soldCounts(indices(j)) < soldCounts(indices(j + 1)) Then
+                    Dim temp = indices(j + 1)
+                    indices(j + 1) = indices(j)
+                    indices(j) = temp
+                End If
+            Next
+        Next
+        Return indices
+    End Function
+
+    'Ascending order
+    Public Function GetLeastSoldIndices() As Integer()
         Dim indices(productCount - 1) As Integer
 
         For i As Integer = 0 To productCount - 1
@@ -72,6 +93,27 @@ Public Class InventorySystem
             Next
         Next
         Return indices
+    End Function
+
+    'filter for low stock then sort in descending order of sold count
+    Public Function GetLowStockIndices() As Integer()
+        Dim lowStockIndices(productCount - 1) As Integer
+        For i As Integer = 0 To productCount - 1
+            If IsLowStock(i) Then
+                lowStockIndices(i) = i
+            End If
+        Next
+
+        For i As Integer = 0 To productCount - 2
+            For j As Integer = 0 To productCount - 2 - i
+                If soldCounts(lowStockIndices(j)) > soldCounts(lowStockIndices(j + 1)) Then
+                    Dim temp = lowStockIndices(j + 1)
+                    lowStockIndices(j + 1) = lowStockIndices(j)
+                    lowStockIndices(j) = temp
+                End If
+            Next
+        Next
+        Return lowStockIndices
     End Function
 
     Public Function GetNoStockIndices() As Integer()

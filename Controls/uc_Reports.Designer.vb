@@ -48,6 +48,7 @@ Partial Class uc_Reports
         colName = New ColumnHeader()
         colUnitsSold = New ColumnHeader()
         colRevenue = New ColumnHeader()
+        lblLowStock = New MaterialSkin.Controls.MaterialLabel()
         MaterialCard1.SuspendLayout()
         MaterialCard2.SuspendLayout()
         MaterialCard3.SuspendLayout()
@@ -65,13 +66,13 @@ Partial Class uc_Reports
         lvLowStock.Columns.AddRange(New ColumnHeader() {colLowStockName, colLowStock})
         lvLowStock.Depth = 0
         lvLowStock.FullRowSelect = True
-        lvLowStock.Location = New Point(0, 20)
+        lvLowStock.Location = New Point(0, 56)
         lvLowStock.MinimumSize = New Size(200, 100)
         lvLowStock.MouseLocation = New Point(-1, -1)
         lvLowStock.MouseState = MaterialSkin.MouseState.OUT
         lvLowStock.Name = "lvLowStock"
         lvLowStock.OwnerDraw = True
-        lvLowStock.Size = New Size(209, 205)
+        lvLowStock.Size = New Size(209, 169)
         lvLowStock.TabIndex = 0
         lvLowStock.UseCompatibleStateImageBehavior = False
         lvLowStock.View = View.Details
@@ -90,7 +91,7 @@ Partial Class uc_Reports
         ' pnlLowStock
         ' 
         pnlLowStock.BackColor = Color.FromArgb(CByte(174), CByte(78), CByte(78))
-        pnlLowStock.Location = New Point(0, 0)
+        pnlLowStock.Location = New Point(12, 14)
         pnlLowStock.Name = "pnlLowStock"
         pnlLowStock.Size = New Size(211, 17)
         pnlLowStock.TabIndex = 1
@@ -299,7 +300,7 @@ Partial Class uc_Reports
         ' MaterialCard5
         ' 
         MaterialCard5.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
-        MaterialCard5.Controls.Add(pnlLowStock)
+        MaterialCard5.Controls.Add(lblLowStock)
         MaterialCard5.Controls.Add(lvLowStock)
         MaterialCard5.Depth = 0
         MaterialCard5.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
@@ -366,10 +367,24 @@ Partial Class uc_Reports
         colRevenue.TextAlign = HorizontalAlignment.Center
         colRevenue.Width = 200
         ' 
+        ' lblLowStock
+        ' 
+        lblLowStock.AutoSize = True
+        lblLowStock.Depth = 0
+        lblLowStock.Font = New Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel)
+        lblLowStock.FontType = MaterialSkin.MaterialSkinManager.fontType.H6
+        lblLowStock.Location = New Point(27, 20)
+        lblLowStock.MouseState = MaterialSkin.MouseState.HOVER
+        lblLowStock.Name = "lblLowStock"
+        lblLowStock.Size = New Size(149, 24)
+        lblLowStock.TabIndex = 1
+        lblLowStock.Text = "Low Stock Items"
+        ' 
         ' uc_Reports
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(pnlLowStock)
         Controls.Add(MaterialCard6)
         Controls.Add(MaterialCard5)
         Controls.Add(MaterialCard4)
@@ -387,6 +402,7 @@ Partial Class uc_Reports
         MaterialCard4.ResumeLayout(False)
         MaterialCard4.PerformLayout()
         MaterialCard5.ResumeLayout(False)
+        MaterialCard5.PerformLayout()
         MaterialCard6.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
@@ -417,5 +433,6 @@ Partial Class uc_Reports
     Friend WithEvents colUnitsSold As ColumnHeader
     Friend WithEvents colRevenue As ColumnHeader
     Friend WithEvents colIndex As ColumnHeader
+    Friend WithEvents lblLowStock As MaterialSkin.Controls.MaterialLabel
 
 End Class

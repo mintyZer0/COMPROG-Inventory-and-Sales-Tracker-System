@@ -23,10 +23,10 @@ Partial Class uc_DataGrid
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         DataGrid = New MaterialSkin.Controls.MaterialListView()
-        lchIndex = New ColumnHeader()
-        lchName = New ColumnHeader()
-        lchPrice = New ColumnHeader()
-        lchQuantity = New ColumnHeader()
+        colIndex = New ColumnHeader()
+        colName = New ColumnHeader()
+        colPrice = New ColumnHeader()
+        colQuantity = New ColumnHeader()
         SuspendLayout()
         ' 
         ' DataGrid
@@ -34,7 +34,7 @@ Partial Class uc_DataGrid
         DataGrid.AutoSizeTable = False
         DataGrid.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
         DataGrid.BorderStyle = BorderStyle.None
-        DataGrid.Columns.AddRange(New ColumnHeader() {lchIndex, lchName, lchPrice, lchQuantity})
+        DataGrid.Columns.AddRange(New ColumnHeader() {colIndex, colName, colPrice, colQuantity})
         DataGrid.Depth = 0
         DataGrid.Dock = DockStyle.Fill
         DataGrid.FullRowSelect = True
@@ -49,28 +49,28 @@ Partial Class uc_DataGrid
         DataGrid.UseCompatibleStateImageBehavior = False
         DataGrid.View = View.Details
         ' 
-        ' lchIndex
+        ' colIndex
         ' 
-        lchIndex.Text = "Index"
-        lchIndex.Width = 100
+        colIndex.Text = "Index"
+        colIndex.Width = 100
         ' 
-        ' lchName
+        ' colName
         ' 
-        lchName.Text = "Name"
-        lchName.TextAlign = HorizontalAlignment.Center
-        lchName.Width = 100
+        colName.Text = "Name"
+        colName.TextAlign = HorizontalAlignment.Center
+        colName.Width = 100
         ' 
-        ' lchPrice
+        ' colPrice
         ' 
-        lchPrice.Text = "Price"
-        lchPrice.TextAlign = HorizontalAlignment.Center
-        lchPrice.Width = 100
+        colPrice.Text = "Price"
+        colPrice.TextAlign = HorizontalAlignment.Center
+        colPrice.Width = 100
         ' 
-        ' lchQuantity
+        ' colQuantity
         ' 
-        lchQuantity.Text = "Quantity"
-        lchQuantity.TextAlign = HorizontalAlignment.Center
-        lchQuantity.Width = 100
+        colQuantity.Text = "Quantity"
+        colQuantity.TextAlign = HorizontalAlignment.Center
+        colQuantity.Width = 100
         ' 
         ' uc_DataGrid
         ' 
@@ -83,9 +83,9 @@ Partial Class uc_DataGrid
     End Sub
 
     Friend WithEvents DataGrid As MaterialSkin.Controls.MaterialListView
-    Friend WithEvents lchName As ColumnHeader
-    Friend WithEvents lchIndex As ColumnHeader
-    Friend WithEvents lchPrice As ColumnHeader
-    Friend WithEvents lchQuantity As ColumnHeader
+    Friend WithEvents colName As ColumnHeader
+    Friend WithEvents colIndex As ColumnHeader
+    Friend WithEvents colPrice As ColumnHeader
+    Friend WithEvents colQuantity As ColumnHeader
 
 End Class

@@ -1,4 +1,5 @@
 ﻿Imports System.Net.Http.Headers
+Imports System.Runtime.InteropServices
 
 Public Class InventorySystem
     ' Parallel Arrays (Max 100 items)
@@ -54,6 +55,25 @@ Public Class InventorySystem
         Return productNames(bestSellerIndex)
     End Function
 
+    Public Function GetBestSellingIndices() As Integer()
+        Dim indices(productCount - 1) As Integer
+
+        For i As Integer = 0 To productCount - 1
+            indices(i) = i
+        Next
+
+        For i As Integer = 0 To productCount - 2
+            For j As Integer = 0 To productCount - 2 - i
+                If soldCounts(j) > soldCounts(j + 1) Then
+                    Dim temp = indices(j + 1)
+                    indices(j + 1) = indices(j)
+                    indices(j) = temp
+                End If
+            Next
+        Next
+        Return indices
+    End Function
+
     Public Function IsLowStock(index As Integer) As Boolean
         Return productStocks(index) < 5
     End Function
@@ -106,6 +126,24 @@ Public Class InventorySystem
             total += GetItemRevenue(i)
         Next
         Return total
+    End Function
+
+    Public Function GetTotalInventoryValue() As Double
+        Dim totalValue As Double = 0
+        For i As Integer = 0 To productCount - 1
+            totalValue += productPrices(i) * productStocks(i)
+        Next
+        Return totalValue
+    End Function
+
+    Public Function GetOutOfStockCount() As Integer
+        Dim count As Integer = 0
+        For i As Integer = 0 To productCount - 1
+            If productStocks(i) = 0 Then
+                count += 1
+            End If
+        Next
+        Return count
     End Function
 
     'Sort Algo
@@ -176,6 +214,11 @@ Public Class InventorySystem
         Dim tempQty = productStocks(firstIndex)
         productStocks(firstIndex) = productStocks(secondIndex)
         productStocks(secondIndex) = tempQty
+
+        'Swap Sold Count
+        Dim tempSold = soldCounts(firstIndex)
+        soldCounts(firstIndex) = soldCounts(secondIndex)
+        soldCounts(secondIndex) = tempSold
     End Sub
 
 End Class

@@ -1,6 +1,6 @@
 ﻿Public Class uc_ManageInventory
     Public Sub Refreshdata()
-        InventoryDataGrid.RefreshList()
+        lvInventoryDataGrid.RefreshList()
     End Sub
     Private Sub btnAddProduct_Click(sender As Object, e As EventArgs) Handles btnAddProduct.Click
         If txtProdName.Text.Trim() = "" Or Val(txtPrice.Text) <= 0 Or Val(txtStock.Text) <= 0 Then
@@ -9,29 +9,55 @@
 
         Database.AddNewProduct(txtProdName.Text, Val(txtPrice.Text), Val(txtStock.Text))
 
-        InventoryDataGrid.RefreshList()
+        lvInventoryDataGrid.RefreshList()
 
     End Sub
 
     Private Sub btnSearchProduct_Click(sender As Object, e As EventArgs) Handles btnSearchProduct.Click
         If txtSearch.Text.Trim() = "" Then
-            InventoryDataGrid.RefreshList()
+            lvInventoryDataGrid.RefreshList()
             Return
         Else
-            InventoryDataGrid.SearchList(txtSearch.Text.Trim().ToLower())
+            lvInventoryDataGrid.SearchList(txtSearch.Text.Trim().ToLower())
         End If
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If InventoryDataGrid.DataGrid.SelectedItems.Count > 0 Then
+        If lvInventoryDataGrid.DataGrid.SelectedItems.Count > 0 Then
             Dim editWindow As New InventoryEdit()
 
-            editWindow.editIndex = CInt(InventoryDataGrid.DataGrid.SelectedItems(0).Tag)
+            editWindow.editIndex = CInt(lvInventoryDataGrid.DataGrid.SelectedItems(0).Tag)
             editWindow.ShowDialog()
-            InventoryDataGrid.RefreshList()
+            lvInventoryDataGrid.RefreshList()
         Else
             MsgBox("Choose an Item to Edit.")
 
         End If
+    End Sub
+
+    Private Sub uc_ManageInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        lvInventoryDataGrid.colIndex.TextAlign = HorizontalAlignment.Center
+        lvInventoryDataGrid.colName.TextAlign = HorizontalAlignment.Center
+        lvInventoryDataGrid.colPrice.TextAlign = HorizontalAlignment.Center
+        lvInventoryDataGrid.colQuantity.TextAlign = HorizontalAlignment.Center
+
+        lvInventoryDataGrid.colIndex.Width = 150
+        lvInventoryDataGrid.colName.Width = 200
+        lvInventoryDataGrid.colPrice.Width = 200
+    End Sub
+
+    Private Sub lvInventoryDataGrid_Resize(sender As Object, e As EventArgs) Handles lvInventoryDataGrid.Resize
+
+        'Fill the last column whenever the window size changes
+        Dim usedWidth As Integer = lvInventoryDataGrid.colIndex.Width +
+                               lvInventoryDataGrid.colName.Width +
+                               lvInventoryDataGrid.colPrice.Width
+
+        Dim remaining As Integer = lvInventoryDataGrid.Width - usedWidth - 100
+
+        If remaining > 0 Then
+            lvInventoryDataGrid.colQuantity.Width = remaining
+        End If
+
     End Sub
 End Class

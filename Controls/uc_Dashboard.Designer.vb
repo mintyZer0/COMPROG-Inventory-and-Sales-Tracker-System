@@ -192,6 +192,7 @@ Partial Class uc_Dashboard
         ' 
         ' MaterialCard4
         ' 
+        MaterialCard4.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         MaterialCard4.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
         MaterialCard4.Controls.Add(pnlProductsSold)
         MaterialCard4.Controls.Add(MaterialLabel5)
@@ -216,6 +217,7 @@ Partial Class uc_Dashboard
         ' 
         ' MaterialCard5
         ' 
+        MaterialCard5.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         MaterialCard5.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
         MaterialCard5.Controls.Add(pnlInventoryValue)
         MaterialCard5.Controls.Add(lblTextInventoryValue)
@@ -318,6 +320,7 @@ Partial Class uc_Dashboard
         ' 
         ' MaterialCard_LeastSold
         ' 
+        MaterialCard_LeastSold.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         MaterialCard_LeastSold.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
         MaterialCard_LeastSold.Controls.Add(pnlLeastSold)
         MaterialCard_LeastSold.Controls.Add(lblTextLeastSold)
@@ -424,6 +427,7 @@ Partial Class uc_Dashboard
         ' 
         ' MaterialCard_OutOfStock
         ' 
+        MaterialCard_OutOfStock.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         MaterialCard_OutOfStock.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
         MaterialCard_OutOfStock.Controls.Add(pnlOutOfStock_New)
         MaterialCard_OutOfStock.Controls.Add(lblTextOutOfStock_New)

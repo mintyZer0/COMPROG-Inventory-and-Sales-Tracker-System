@@ -17,13 +17,29 @@ Public Class uc_POfSales
         qtySpinner.Visible = False
         qtySpinner.Minimum = 1
         qtySpinner.Maximum = 100
-        Me.Controls.Add(qtySpinner)
+        crdCurrentOrder.Controls.Add(qtySpinner)
         qtySpinner.BringToFront()
 
         AddHandler pos_DataGrid.DataGrid.SelectedIndexChanged, AddressOf UpdateOrderList
         AddHandler qtySpinner.ValueChanged, AddressOf qtySpinner_ValChange
         AddHandler qtySpinner.KeyDown, AddressOf QtySpinner_KeyDown
         AddHandler qtySpinner.Leave, AddressOf qtySpinner_Leave
+
+        pos_DataGrid.ResizeColumns()
+        ResizeCurrentOrderColumns()
+    End Sub
+
+    Private Sub ResizeCurrentOrderColumns()
+        If lvCurrentOrder.Columns.Count >= 3 Then
+            Dim totalWidth As Integer = lvCurrentOrder.ClientSize.Width
+            lvCurrentOrder.Columns(0).Width = totalWidth * 0.33
+            lvCurrentOrder.Columns(1).Width = totalWidth * 0.33
+            lvCurrentOrder.Columns(2).Width = totalWidth * 0.34
+        End If
+    End Sub
+
+    Private Sub uc_POfSales_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        ResizeCurrentOrderColumns()
     End Sub
 
     Private Sub CommitSpinnerValue()

@@ -36,28 +36,6 @@
     End Sub
 
     Private Sub uc_ManageInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lvInventoryDataGrid.colIndex.TextAlign = HorizontalAlignment.Center
-        lvInventoryDataGrid.colName.TextAlign = HorizontalAlignment.Center
-        lvInventoryDataGrid.colPrice.TextAlign = HorizontalAlignment.Center
-        lvInventoryDataGrid.colQuantity.TextAlign = HorizontalAlignment.Center
-
-        lvInventoryDataGrid.colIndex.Width = 150
-        lvInventoryDataGrid.colName.Width = 200
-        lvInventoryDataGrid.colPrice.Width = 200
-    End Sub
-
-    Private Sub lvInventoryDataGrid_Resize(sender As Object, e As EventArgs) Handles lvInventoryDataGrid.Resize
-
-        'Fill the last column whenever the window size changes
-        Dim usedWidth As Integer = lvInventoryDataGrid.colIndex.Width +
-                               lvInventoryDataGrid.colName.Width +
-                               lvInventoryDataGrid.colPrice.Width
-
-        Dim remaining As Integer = lvInventoryDataGrid.Width - usedWidth - 100
-
-        If remaining > 0 Then
-            lvInventoryDataGrid.colQuantity.Width = remaining
-        End If
-
+        lvInventoryDataGrid.ResizeColumns()
     End Sub
 End Class

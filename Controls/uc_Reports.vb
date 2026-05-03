@@ -1,37 +1,6 @@
 ﻿Public Class uc_Reports
     Private Sub uc_Reports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ApplyPaint()
-        colLowStockName.Width = lvLowStock.Width - 4
-        colLowStockName.Width = colLowStockName.Width - colLowStock.Width
-        colLowStockName.TextAlign = HorizontalAlignment.Center
-        colName.TextAlign = HorizontalAlignment.Center
-        colIndex.TextAlign = HorizontalAlignment.Center
-        colUnitsSold.TextAlign = HorizontalAlignment.Center
-        colRevenue.TextAlign = HorizontalAlignment.Center
-    End Sub
-
-    Public Sub SetBestSellingItem()
-        lblBestSellingItem.Text = Database.GetBestSellingItem()
-    End Sub
-
-    Public Sub SetTotalItemsSold()
-        lblTotalItemsSold.Text = Database.GetTotalProductsSold().ToString()
-    End Sub
-
-    Public Sub SetTotalRevenue()
-        lblTotalRevenue.Text = "₱" & Database.GetTotalRevenue().ToString("F2")
-    End Sub
-
-    Public Sub RefreshLowStockList()
-        lvLowStock.Items.Clear()
-        For i As Integer = 0 To Database.GetProductCount() - 1
-            If Database.IsLowStock(i) Then
-                Dim row As New ListViewItem(Database.GetProductName(i).ToString())
-                row.Tag = i
-                row.SubItems.Add(Database.GetProductStock(i).ToString())
-                lvLowStock.Items.Add(row)
-            End If
-        Next
+        ResizeColumns()
     End Sub
 
     Public Sub RefreshSalesReportList()
@@ -41,29 +10,30 @@
             row.Tag = i
             row.SubItems.Add(Database.GetProductName(i).ToString())
             row.SubItems.Add(Database.GetSoldCount(i).ToString())
-            row.SubItems.Add(Database.GetItemRevenue(i).ToString())
+            row.SubItems.Add("₱" & Database.GetItemRevenue(i).ToString("F2"))
             lvSalesReport.Items.Add(row)
         Next
+        ResizeColumns()
     End Sub
 
-    Private Sub ApplyPaint()
-        pnlLowStock.BackColor = Color.FromArgb(174, 78, 78)
-        pnlTotalItemsSold.BackColor = Color.FromArgb(83, 162, 190)
-        pnlBestSellingItem.BackColor = Color.FromArgb(255, 193, 7)
-        pnlTotalRevenue.BackColor = Color.FromArgb(144, 238, 144)
+    Private Sub ResizeColumns()
+        If lvSalesReport.Columns.Count > 0 Then
+            Dim totalWidth As Integer = lvSalesReport.ClientSize.Width
+            lvSalesReport.Columns(0).Width = totalWidth * 0.1
+            lvSalesReport.Columns(1).Width = totalWidth * 0.4
+            lvSalesReport.Columns(2).Width = totalWidth * 0.25
+            lvSalesReport.Columns(3).Width = totalWidth * 0.25
+        End If
+    End Sub
+
+    Private Sub uc_Reports_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        ResizeColumns()
     End Sub
 
     Private Sub lvSalesReport_VisibleChanged(sender As Object, e As EventArgs) Handles lvSalesReport.VisibleChanged
         If Me.Visible Then
             RefreshSalesReportList()
-            RefreshLowStockList()
-            SetBestSellingItem()
-            SetTotalItemsSold()
-            SetTotalRevenue()
+            ResizeColumns()
         End If
-    End Sub
-
-    Private Sub lblTotalRevenue_Click(sender As Object, e As EventArgs) Handles lblTotalRevenue.Click
-
     End Sub
 End Class

@@ -15,13 +15,22 @@ Public Class MainWindow
             )
         Me.Hide()
 
-        Using login As New Login()
+        LoginUser()
+    End Sub
+
+    Private Sub btnLogOut_Click(sender As Object, e As EventArgs) Handles btnLogOut.Click
+        Me.Hide()
+        LoginUser()
+
+    End Sub
+
+    Private Sub LoginUser()
+        Using login As New Login
             If login.ShowDialog() = DialogResult.OK Then
                 Me.Show()
             Else
                 Application.Exit()
             End If
         End Using
-
     End Sub
 End Class

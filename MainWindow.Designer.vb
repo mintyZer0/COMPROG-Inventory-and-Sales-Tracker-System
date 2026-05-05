@@ -32,6 +32,7 @@ Partial Class MainWindow
         tpReports = New TabPage()
         Uc_Reports = New uc_Reports()
         dwrSidebar = New MaterialSkin.Controls.MaterialDrawer()
+        btnLogOut = New MaterialSkin.Controls.MaterialButton()
         tbMainWindow.SuspendLayout()
         tpDashboard.SuspendLayout()
         tpManageInventory.SuspendLayout()
@@ -92,6 +93,7 @@ Partial Class MainWindow
         Uc_ManageInventory1.Dock = DockStyle.Fill
         Uc_ManageInventory1.Location = New Point(3, 3)
         Uc_ManageInventory1.Name = "Uc_ManageInventory1"
+        Uc_ManageInventory1.Size = New Size(853, 499)
         Uc_ManageInventory1.TabIndex = 0
         ' 
         ' tpPointOfSale
@@ -109,7 +111,9 @@ Partial Class MainWindow
         ' 
         Uc_pOfSales1.Dock = DockStyle.Fill
         Uc_pOfSales1.Location = New Point(3, 3)
+        Uc_pOfSales1.MinimumSize = New Size(825, 471)
         Uc_pOfSales1.Name = "Uc_pOfSales1"
+        Uc_pOfSales1.Size = New Size(853, 499)
         Uc_pOfSales1.TabIndex = 0
         ' 
         ' tpReports
@@ -127,7 +131,9 @@ Partial Class MainWindow
         ' 
         Uc_Reports.Dock = DockStyle.Fill
         Uc_Reports.Location = New Point(3, 3)
+        Uc_Reports.MinimumSize = New Size(825, 471)
         Uc_Reports.Name = "Uc_Reports"
+        Uc_Reports.Size = New Size(853, 499)
         Uc_Reports.TabIndex = 0
         ' 
         ' dwrSidebar
@@ -150,11 +156,33 @@ Partial Class MainWindow
         dwrSidebar.Text = "MaterialDrawer1"
         dwrSidebar.UseColors = False
         ' 
+        ' btnLogOut
+        ' 
+        btnLogOut.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
+        btnLogOut.AutoSize = False
+        btnLogOut.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        btnLogOut.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default
+        btnLogOut.Depth = 0
+        btnLogOut.HighEmphasis = True
+        btnLogOut.Icon = Nothing
+        btnLogOut.Location = New Point(13, 539)
+        btnLogOut.Margin = New Padding(4, 6, 4, 6)
+        btnLogOut.MouseState = MaterialSkin.MouseState.HOVER
+        btnLogOut.Name = "btnLogOut"
+        btnLogOut.NoAccentTextColor = Color.Empty
+        btnLogOut.Size = New Size(128, 34)
+        btnLogOut.TabIndex = 5
+        btnLogOut.Text = "Log Out"
+        btnLogOut.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
+        btnLogOut.UseAccentColor = False
+        btnLogOut.UseVisualStyleBackColor = True
+        ' 
         ' MainWindow
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1024, 600)
+        Controls.Add(btnLogOut)
         Controls.Add(tbMainWindow)
         Controls.Add(dwrSidebar)
         MinimumSize = New Size(1024, 600)
@@ -177,4 +205,5 @@ Partial Class MainWindow
     Friend WithEvents Uc_ManageInventory1 As uc_ManageInventory
     Friend WithEvents Uc_pOfSales1 As uc_POfSales
     Friend WithEvents Uc_Reports As uc_Reports
+    Friend WithEvents btnLogOut As MaterialSkin.Controls.MaterialButton
 End Class

@@ -143,7 +143,7 @@ Partial Class Login
         Controls.Add(txtPassword)
         Controls.Add(txtUsername)
         Name = "Login"
-        Text = "Form1"
+        Text = "Login"
         ResumeLayout(False)
         PerformLayout()
     End Sub

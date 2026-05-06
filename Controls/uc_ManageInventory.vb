@@ -38,4 +38,13 @@
     Private Sub uc_ManageInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lvInventoryDataGrid.ResizeColumns()
     End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        Dim selectedIndex As Integer
+        If lvInventoryDataGrid.DataGrid.SelectedIndices.Count > 0 Then
+            selectedIndex = CInt(lvInventoryDataGrid.DataGrid.SelectedIndices(0))
+            Database.DeleteProduct(selectedIndex)
+        End If
+        lvInventoryDataGrid.RefreshList()
+    End Sub
 End Class

@@ -274,4 +274,13 @@ Public Class InventorySystem
         soldCounts(secondIndex) = tempSold
     End Sub
 
+    Public Sub DeleteProduct(selectedIndex As Integer)
+        For i As Integer = selectedIndex To productCount - 2
+            productNames(i) = productNames(i + 1)
+            productPrices(i) = productPrices(i + 1)
+            productStocks(i) = productStocks(i + 1)
+        Next
+        productCount -= 1
+    End Sub
+
 End Class

@@ -36,6 +36,7 @@ Partial Class uc_ManageInventory
         lvInventoryDataGrid = New uc_DataGrid()
         MaterialCard1 = New MaterialSkin.Controls.MaterialCard()
         MaterialCard2 = New MaterialSkin.Controls.MaterialCard()
+        btnDelete = New MaterialSkin.Controls.MaterialButton()
         MaterialCard1.SuspendLayout()
         MaterialCard2.SuspendLayout()
         SuspendLayout()
@@ -163,7 +164,7 @@ Partial Class uc_ManageInventory
         btnEdit.Depth = 0
         btnEdit.HighEmphasis = True
         btnEdit.Icon = Nothing
-        btnEdit.Location = New Point(659, 104)
+        btnEdit.Location = New Point(658, 109)
         btnEdit.Margin = New Padding(4, 6, 4, 6)
         btnEdit.MouseState = MaterialSkin.MouseState.HOVER
         btnEdit.Name = "btnEdit"
@@ -252,6 +253,7 @@ Partial Class uc_ManageInventory
         ' 
         MaterialCard2.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         MaterialCard2.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
+        MaterialCard2.Controls.Add(btnDelete)
         MaterialCard2.Controls.Add(txtPrice)
         MaterialCard2.Controls.Add(btnEdit)
         MaterialCard2.Controls.Add(btnAddProduct)
@@ -272,6 +274,27 @@ Partial Class uc_ManageInventory
         MaterialCard2.Padding = New Padding(14)
         MaterialCard2.Size = New Size(797, 170)
         MaterialCard2.TabIndex = 11
+        ' 
+        ' btnDelete
+        ' 
+        btnDelete.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        btnDelete.AutoSize = False
+        btnDelete.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        btnDelete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default
+        btnDelete.Depth = 0
+        btnDelete.HighEmphasis = True
+        btnDelete.Icon = Nothing
+        btnDelete.Location = New Point(505, 109)
+        btnDelete.Margin = New Padding(4, 6, 4, 6)
+        btnDelete.MouseState = MaterialSkin.MouseState.HOVER
+        btnDelete.Name = "btnDelete"
+        btnDelete.NoAccentTextColor = Color.Empty
+        btnDelete.Size = New Size(140, 36)
+        btnDelete.TabIndex = 11
+        btnDelete.Text = "REMOVE PRODUCT"
+        btnDelete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
+        btnDelete.UseAccentColor = False
+        btnDelete.UseVisualStyleBackColor = True
         ' 
         ' uc_ManageInventory
         ' 
@@ -301,5 +324,6 @@ Partial Class uc_ManageInventory
     Friend WithEvents lvInventoryDataGrid As uc_DataGrid
     Friend WithEvents MaterialCard1 As MaterialSkin.Controls.MaterialCard
     Friend WithEvents MaterialCard2 As MaterialSkin.Controls.MaterialCard
+    Friend WithEvents btnDelete As MaterialSkin.Controls.MaterialButton
 
 End Class

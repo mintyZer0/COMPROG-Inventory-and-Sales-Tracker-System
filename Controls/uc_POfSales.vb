@@ -42,6 +42,20 @@ Public Class uc_POfSales
         ResizeCurrentOrderColumns()
     End Sub
 
+    Private Sub UpdateTotal()
+        Dim total As Double = 0.0
+        For Each item As ListViewItem In lvCurrentOrder.Items
+            Dim index As Integer = CInt(item.Tag)
+            Dim qty As Integer = 0
+
+            If Integer.TryParse(item.SubItems(2).Text, qty) Then
+                Dim price As Double = Database.GetProductPrice(index)
+                total += (qty * price)
+            End If
+        Next
+        lblPOSTotal.Text = total.ToString("F2")
+    End Sub
+
     Private Sub CommitSpinnerValue()
         If qtySpinner.Visible AndAlso qtySpinner.Tag IsNot Nothing Then
             qtySpinner.Validate()
@@ -53,6 +67,7 @@ Public Class uc_POfSales
 
             item.SubItems(2).Text = qtySpinner.Value.ToString()
             qtySpinner.Visible = False
+            UpdateTotal()
         End If
     End Sub
 
@@ -84,6 +99,7 @@ Public Class uc_POfSales
 
             lvCurrentOrder.Items.Add(orderRow)
         Next
+        UpdateTotal()
     End Sub
 
     Private Sub qtySpinner_ValChange(sender As Object, e As EventArgs)
@@ -93,6 +109,7 @@ Public Class uc_POfSales
 
             selectedQuantities(prodIndex) = CInt(qtySpinner.Value)
             item.SubItems(2).Text = qtySpinner.Value.ToString()
+            UpdateTotal()
         End If
     End Sub
 
@@ -113,25 +130,50 @@ Public Class uc_POfSales
     End Sub
 
     Private Sub MaterialButton1_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
+        If lvCurrentOrder.Items.Count = 0 Then
+            MessageBox.Show("Please add Items to the order first", "Orders", MessageBoxButtons.OK)
+            Return
+        End If
+
+
         Dim total As Double = 0.0
+        Dim receipt As New System.Text.StringBuilder()
+        Dim allSuccessful As Boolean = True
+        receipt.AppendLine("Order Summary:" + System.Environment.NewLine())
 
         For Each item As ListViewItem In lvCurrentOrder.Items
             Dim index As Integer = CInt(item.Tag)
             Dim qty As Integer = 0
 
             If Integer.TryParse(item.SubItems(2).Text, qty) Then
+                Dim name As String = item.Text
                 Dim price As Double = Database.GetProductPrice(index)
-                total += (qty * price)
-                Database.ProcessSale(index, qty)
+                Dim subTotal As Double = qty * price
+
+                If Database.ProcessSale(index, qty) Then
+                    total += subTotal
+                    receipt.Append($"{name} x{qty} - ₱{subTotal:F2}" + System.Environment.NewLine())
+                Else
+                    allSuccessful = False
+                    Exit For
+                End If
             End If
         Next
 
-        lblPOSTotal.Text = total.ToString("F2")
-        pos_DataGrid.RefreshList()
+        If allSuccessful Then
+            receipt.AppendLine("")
+            receipt.AppendLine($"Total: ₱{total:F2}")
+            MessageBox.Show(receipt.ToString(), "Purchace Successful", MessageBoxButtons.OK)
 
-        Dim mainForm = DirectCast(Me.FindForm(), MainWindow)
-        If mainForm IsNot Nothing Then
-            mainForm.Uc_ManageInventory1.Refreshdata()
+            lblPOSTotal.Text = "0.00"
+            lvCurrentOrder.Items.Clear()
+            selectedQuantities.Clear()
+            pos_DataGrid.RefreshList()
+
+            Dim mainForm = DirectCast(Me.FindForm(), MainWindow)
+            If mainForm IsNot Nothing Then
+                mainForm.Uc_ManageInventory1.Refreshdata()
+            End If
         End If
     End Sub
 End Class

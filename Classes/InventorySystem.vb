@@ -157,16 +157,19 @@ Public Class InventorySystem
         End If
     End Sub
 
-    Public Sub ProcessSale(index As Integer, quantity As Integer)
+    Public Function ProcessSale(index As Integer, quantity As Integer) As Boolean
         If index >= 0 AndAlso index < productCount Then
             If productStocks(index) >= quantity Then
                 productStocks(index) -= quantity
                 soldCounts(index) += quantity
+                Return True
             Else
                 MsgBox("Insufficient Stock!")
+                Return False
             End If
         End If
-    End Sub
+        Return False
+    End Function
 
     ' Functions for Revenue
     Public Function GetItemRevenue(index As Integer) As Double

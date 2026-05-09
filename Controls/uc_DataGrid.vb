@@ -12,8 +12,8 @@ Public Class uc_DataGrid
     Public Sub ResizeColumns()
         If DataGrid.Columns.Count > 0 Then
             Dim totalWidth As Integer = DataGrid.ClientSize.Width
-            DataGrid.Columns(0).Width = totalWidth * 0.1
-            DataGrid.Columns(1).Width = totalWidth * 0.4
+            DataGrid.Columns(0).Width = totalWidth * 0.2
+            DataGrid.Columns(1).Width = totalWidth * 0.3
             DataGrid.Columns(2).Width = totalWidth * 0.25
             DataGrid.Columns(3).Width = totalWidth * 0.25
         End If

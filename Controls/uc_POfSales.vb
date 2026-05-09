@@ -27,6 +27,9 @@ Public Class uc_POfSales
 
         pos_DataGrid.ResizeColumns()
         ResizeCurrentOrderColumns()
+
+        AddHandler Database.InventoryChange, AddressOf Me.pos_DataGrid.RefreshList
+
     End Sub
 
     Private Sub ResizeCurrentOrderColumns()
@@ -180,4 +183,6 @@ Public Class uc_POfSales
     Private Sub pos_SearchBar(sender As Object, e As EventArgs) Handles posSearchBar.TextChanged
         pos_DataGrid.SearchList(posSearchBar.Text)
     End Sub
+
+
 End Class

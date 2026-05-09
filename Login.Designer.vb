@@ -71,7 +71,7 @@ Partial Class Login
         txtPassword.MaxLength = 32767
         txtPassword.MouseState = MaterialSkin.MouseState.OUT
         txtPassword.Name = "txtPassword"
-        txtPassword.PasswordChar = ChrW(0)
+        txtPassword.PasswordChar = "●"c
         txtPassword.PrefixSuffixText = Nothing
         txtPassword.ReadOnly = False
         txtPassword.RightToLeft = RightToLeft.No
@@ -84,7 +84,7 @@ Partial Class Login
         txtPassword.TabStop = False
         txtPassword.TextAlign = HorizontalAlignment.Left
         txtPassword.TrailingIcon = Nothing
-        txtPassword.UseSystemPasswordChar = False
+        txtPassword.UseSystemPasswordChar = True
         txtPassword.UseTallSize = False
         ' 
         ' lblUsername

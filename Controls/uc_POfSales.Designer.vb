@@ -152,11 +152,12 @@ Partial Class uc_POfSales
         ' 
         ' MaterialLabel1
         ' 
+        MaterialLabel1.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         MaterialLabel1.AutoSize = True
         MaterialLabel1.Depth = 0
         MaterialLabel1.Font = New Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel)
         MaterialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H4
-        MaterialLabel1.Location = New Point(66, 8)
+        MaterialLabel1.Location = New Point(70, 8)
         MaterialLabel1.MouseState = MaterialSkin.MouseState.HOVER
         MaterialLabel1.Name = "MaterialLabel1"
         MaterialLabel1.Size = New Size(206, 41)
@@ -165,6 +166,7 @@ Partial Class uc_POfSales
         ' 
         ' MaterialCard2
         ' 
+        MaterialCard2.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         MaterialCard2.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
         MaterialCard2.Controls.Add(posSearchBar)
         MaterialCard2.Depth = 0
@@ -174,11 +176,12 @@ Partial Class uc_POfSales
         MaterialCard2.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard2.Name = "MaterialCard2"
         MaterialCard2.Padding = New Padding(14)
-        MaterialCard2.Size = New Size(487, 42)
+        MaterialCard2.Size = New Size(450, 46)
         MaterialCard2.TabIndex = 8
         ' 
         ' posSearchBar
         ' 
+        posSearchBar.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         posSearchBar.AnimateReadOnly = False
         posSearchBar.BackgroundImageLayout = ImageLayout.None
         posSearchBar.CharacterCasing = CharacterCasing.Normal
@@ -186,7 +189,7 @@ Partial Class uc_POfSales
         posSearchBar.Font = New Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel)
         posSearchBar.HideSelection = True
         posSearchBar.LeadingIcon = Nothing
-        posSearchBar.Location = New Point(17, 4)
+        posSearchBar.Location = New Point(17, 6)
         posSearchBar.MaxLength = 32767
         posSearchBar.MouseState = MaterialSkin.MouseState.OUT
         posSearchBar.Name = "posSearchBar"
@@ -198,7 +201,7 @@ Partial Class uc_POfSales
         posSearchBar.SelectionLength = 0
         posSearchBar.SelectionStart = 0
         posSearchBar.ShortcutsEnabled = True
-        posSearchBar.Size = New Size(453, 36)
+        posSearchBar.Size = New Size(416, 36)
         posSearchBar.TabIndex = 1
         posSearchBar.TabStop = False
         posSearchBar.TextAlign = HorizontalAlignment.Left

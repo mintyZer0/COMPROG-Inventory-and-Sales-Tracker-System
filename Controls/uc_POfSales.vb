@@ -135,7 +135,6 @@ Public Class uc_POfSales
             Return
         End If
 
-
         Dim total As Double = 0.0
         Dim receipt As New System.Text.StringBuilder()
         Dim allSuccessful As Boolean = True

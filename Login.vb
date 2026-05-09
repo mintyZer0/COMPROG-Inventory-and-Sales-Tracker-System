@@ -1,18 +1,24 @@
-﻿Public Class Login
+﻿Imports MaterialSkin
+
+Public Class Login
     Public Enum LoginSystem
         Inventory
         POS
     End Enum
 
-    Private _selectedSystem As LoginSystem?
-
-    Public ReadOnly Property SelectedSystem As LoginSystem?
-        Get
-            Return _selectedSystem
-        End Get
-    End Property
-
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Setup MaterialSkin
+        Dim skinManager As MaterialSkinManager = MaterialSkinManager.Instance
+        skinManager.AddFormToManage(Me)
+        skinManager.Theme = MaterialSkinManager.Themes.LIGHT
+        skinManager.ColorScheme = New ColorScheme(
+            ColorTranslator.FromHtml("#1d84b5"),
+            ColorTranslator.FromHtml("#0a2239"),
+            ColorTranslator.FromHtml("#176087"),
+            ColorTranslator.FromHtml("#53a2be"),
+            TextShade.WHITE
+        )
+
         cmbSystem.Items.Clear()
         cmbSystem.Items.Add("Inventory System")
         cmbSystem.Items.Add("POS System")
@@ -51,9 +57,33 @@
                 Return
             End If
 
-            _selectedSystem = selectedSystem
-            DialogResult = DialogResult.OK
-            Close()
+            Me.Hide()
+            txtUsername.Text = ""
+            txtPassword.Text = ""
+            cmbSystem.SelectedIndex = -1
+
+            Select Case selectedSystem
+                Case LoginSystem.Inventory
+                    Dim inventory As New MainWindow()
+                    AddHandler inventory.FormClosed, Sub(s, ev)
+                                                         If DirectCast(s, MainWindow).WasLogout Then
+                                                             Me.Show()
+                                                         Else
+                                                             Application.Exit()
+                                                         End If
+                                                     End Sub
+                    inventory.Show()
+                Case LoginSystem.POS
+                    Dim pos As New POSWindow()
+                    AddHandler pos.FormClosed, Sub(s, ev)
+                                                   If DirectCast(s, POSWindow).WasLogout Then
+                                                       Me.Show()
+                                                   Else
+                                                       Application.Exit()
+                                                   End If
+                                               End Sub
+                    pos.Show()
+            End Select
         Else
             MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If

@@ -164,7 +164,6 @@ Public Class InventorySystem
                 soldCounts(index) += quantity
                 Return True
             Else
-                MsgBox("Insufficient Stock!")
                 Return False
             End If
         End If

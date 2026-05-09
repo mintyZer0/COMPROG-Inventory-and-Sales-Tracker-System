@@ -2,6 +2,7 @@
 Imports System.Runtime.InteropServices
 
 Public Class InventorySystem
+    Public Event InventoryChange()
     ' Parallel Arrays (Max 100 items)
     Private productNames(99) As String
     Private productPrices(99) As Double
@@ -132,22 +133,33 @@ Public Class InventorySystem
     End Function
 
     Public Sub AddNewProduct(name As String, price As Double, initialStock As Integer)
+        For i As Integer = 0 To productCount - 1
+            If productNames(i) = name Then
+                MsgBox("Product already exists.")
+                Return
+            End If
+        Next
+
         If productCount < 100 Then
             productNames(productCount) = name
             productPrices(productCount) = price
             productStocks(productCount) = initialStock
             soldCounts(productCount) = 0
             productCount += 1
+            RaiseEvent InventoryChange()
         Else
             MsgBox("Inventory Full!")
         End If
+
     End Sub
+
 
     Public Sub UpdateProduct(index As Integer, newProdName As String, newPrice As Double, newStock As Integer)
         If index >= 0 AndAlso index < productCount AndAlso newProdName <> "" AndAlso newPrice > 0 AndAlso newStock >= 0 Then
             productNames(index) = newProdName
             productPrices(index) = newPrice
             productStocks(index) = newStock
+            RaiseEvent InventoryChange()
         End If
     End Sub
 
@@ -254,7 +266,7 @@ Public Class InventorySystem
             End If
         Next
     End Sub
-    Public Sub SwapAll(firstIndex As Integer, secondIndex As Integer)
+    Private Sub SwapAll(firstIndex As Integer, secondIndex As Integer)
         'Swap names
         Dim tempName = productNames(firstIndex)
         productNames(firstIndex) = productNames(secondIndex)
@@ -283,6 +295,8 @@ Public Class InventorySystem
             productStocks(i) = productStocks(i + 1)
         Next
         productCount -= 1
+        RaiseEvent InventoryChange()
     End Sub
+
 
 End Class

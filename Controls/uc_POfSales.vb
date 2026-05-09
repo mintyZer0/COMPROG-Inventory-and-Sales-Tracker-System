@@ -135,7 +135,6 @@ Public Class uc_POfSales
             Return
         End If
 
-
         Dim total As Double = 0.0
         Dim receipt As New System.Text.StringBuilder()
         Dim allSuccessful As Boolean = True
@@ -168,6 +167,7 @@ Public Class uc_POfSales
             lblPOSTotal.Text = "0.00"
             lvCurrentOrder.Items.Clear()
             selectedQuantities.Clear()
+            posSearchBar.Text = ""
             pos_DataGrid.RefreshList()
 
             Dim mainForm = DirectCast(Me.FindForm(), MainWindow)
@@ -175,5 +175,9 @@ Public Class uc_POfSales
                 mainForm.Uc_ManageInventory1.Refreshdata()
             End If
         End If
+    End Sub
+
+    Private Sub pos_SearchBar(sender As Object, e As EventArgs) Handles posSearchBar.TextChanged
+        pos_DataGrid.SearchList(posSearchBar.Text)
     End Sub
 End Class

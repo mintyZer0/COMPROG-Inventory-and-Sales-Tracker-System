@@ -24,7 +24,6 @@ Public Class uc_DataGrid
     End Sub
 
     Private Sub uc_DataGrid_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
-        RefreshList()
         ResizeColumns()
     End Sub
 
@@ -70,7 +69,7 @@ Public Class uc_DataGrid
 
     Public Sub SearchList(searched As String)
         DataGrid.Items.Clear()
-        Dim word As String = searched
+        Dim word As String = searched.ToLower()
 
         For i As Integer = 0 To Database.GetProductCount() - 1
             Dim productName As String = Database.GetProductName(i).ToLower()

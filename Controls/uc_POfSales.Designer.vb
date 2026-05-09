@@ -30,8 +30,11 @@ Partial Class uc_POfSales
         crdCurrentOrder = New MaterialSkin.Controls.MaterialCard()
         lvCurrentOrder = New MaterialSkin.Controls.MaterialListView()
         MaterialLabel1 = New MaterialSkin.Controls.MaterialLabel()
+        MaterialCard2 = New MaterialSkin.Controls.MaterialCard()
+        posSearchBar = New MaterialSkin.Controls.MaterialTextBox2()
         MaterialCard1.SuspendLayout()
         crdCurrentOrder.SuspendLayout()
+        MaterialCard2.SuspendLayout()
         SuspendLayout()
         ' 
         ' pos_DataGrid
@@ -40,7 +43,7 @@ Partial Class uc_POfSales
         pos_DataGrid.ImeMode = ImeMode.NoControl
         pos_DataGrid.Location = New Point(17, 8)
         pos_DataGrid.Name = "pos_DataGrid"
-        pos_DataGrid.Size = New Size(416, 397)
+        pos_DataGrid.Size = New Size(416, 346)
         pos_DataGrid.TabIndex = 0
         ' 
         ' btnCalculate
@@ -101,12 +104,12 @@ Partial Class uc_POfSales
         MaterialCard1.Controls.Add(pos_DataGrid)
         MaterialCard1.Depth = 0
         MaterialCard1.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
-        MaterialCard1.Location = New Point(14, 14)
+        MaterialCard1.Location = New Point(14, 65)
         MaterialCard1.Margin = New Padding(14)
         MaterialCard1.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard1.Name = "MaterialCard1"
         MaterialCard1.Padding = New Padding(14)
-        MaterialCard1.Size = New Size(450, 425)
+        MaterialCard1.Size = New Size(450, 374)
         MaterialCard1.TabIndex = 6
         ' 
         ' crdCurrentOrder
@@ -160,10 +163,54 @@ Partial Class uc_POfSales
         MaterialLabel1.TabIndex = 7
         MaterialLabel1.Text = "Current Order"
         ' 
+        ' MaterialCard2
+        ' 
+        MaterialCard2.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
+        MaterialCard2.Controls.Add(posSearchBar)
+        MaterialCard2.Depth = 0
+        MaterialCard2.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
+        MaterialCard2.Location = New Point(14, 14)
+        MaterialCard2.Margin = New Padding(14)
+        MaterialCard2.MouseState = MaterialSkin.MouseState.HOVER
+        MaterialCard2.Name = "MaterialCard2"
+        MaterialCard2.Padding = New Padding(14)
+        MaterialCard2.Size = New Size(487, 42)
+        MaterialCard2.TabIndex = 8
+        ' 
+        ' posSearchBar
+        ' 
+        posSearchBar.AnimateReadOnly = False
+        posSearchBar.BackgroundImageLayout = ImageLayout.None
+        posSearchBar.CharacterCasing = CharacterCasing.Normal
+        posSearchBar.Depth = 0
+        posSearchBar.Font = New Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel)
+        posSearchBar.HideSelection = True
+        posSearchBar.LeadingIcon = Nothing
+        posSearchBar.Location = New Point(17, 4)
+        posSearchBar.MaxLength = 32767
+        posSearchBar.MouseState = MaterialSkin.MouseState.OUT
+        posSearchBar.Name = "posSearchBar"
+        posSearchBar.PasswordChar = ChrW(0)
+        posSearchBar.PrefixSuffixText = Nothing
+        posSearchBar.ReadOnly = False
+        posSearchBar.RightToLeft = RightToLeft.No
+        posSearchBar.SelectedText = ""
+        posSearchBar.SelectionLength = 0
+        posSearchBar.SelectionStart = 0
+        posSearchBar.ShortcutsEnabled = True
+        posSearchBar.Size = New Size(453, 36)
+        posSearchBar.TabIndex = 1
+        posSearchBar.TabStop = False
+        posSearchBar.TextAlign = HorizontalAlignment.Left
+        posSearchBar.TrailingIcon = Nothing
+        posSearchBar.UseSystemPasswordChar = False
+        posSearchBar.UseTallSize = False
+        ' 
         ' uc_POfSales
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(MaterialCard2)
         Controls.Add(MaterialCard1)
         Controls.Add(crdCurrentOrder)
         MinimumSize = New Size(825, 471)
@@ -172,6 +219,7 @@ Partial Class uc_POfSales
         MaterialCard1.ResumeLayout(False)
         crdCurrentOrder.ResumeLayout(False)
         crdCurrentOrder.PerformLayout()
+        MaterialCard2.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
@@ -183,5 +231,7 @@ Partial Class uc_POfSales
     Friend WithEvents crdCurrentOrder As MaterialSkin.Controls.MaterialCard
     Friend WithEvents MaterialLabel1 As MaterialSkin.Controls.MaterialLabel
     Friend WithEvents lvCurrentOrder As MaterialSkin.Controls.MaterialListView
+    Friend WithEvents MaterialCard2 As MaterialSkin.Controls.MaterialCard
+    Friend WithEvents posSearchBar As MaterialSkin.Controls.MaterialTextBox2
 
 End Class

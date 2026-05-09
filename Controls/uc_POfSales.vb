@@ -135,6 +135,25 @@ Public Class uc_POfSales
             Return
         End If
 
+        Dim insufStock As New List(Of String)
+
+        For Each item As ListViewItem In lvCurrentOrder.Items
+            Dim index As Integer = CInt(item.Tag)
+            Dim qty As Integer = 0
+
+            If Integer.TryParse(item.SubItems(2).Text, qty) Then
+                If Database.GetProductStock(index) < qty Then
+                    insufStock.Add($"- {item.Text} (Available: {Database.GetProductStock(index)})")
+                End If
+            End If
+        Next
+
+        If insufStock.Count > 0 Then
+            Dim msg As String = "Insufficient Stock for: " & Environment.NewLine() & String.Join(Environment.NewLine(), insufStock)
+            MessageBox.Show(msg, "Purchase Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
         Dim total As Double = 0.0
         Dim receipt As New System.Text.StringBuilder()
         Dim allSuccessful As Boolean = True
@@ -143,6 +162,7 @@ Public Class uc_POfSales
         For Each item As ListViewItem In lvCurrentOrder.Items
             Dim index As Integer = CInt(item.Tag)
             Dim qty As Integer = 0
+
 
             If Integer.TryParse(item.SubItems(2).Text, qty) Then
                 Dim name As String = item.Text

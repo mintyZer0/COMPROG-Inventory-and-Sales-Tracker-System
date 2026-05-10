@@ -36,8 +36,8 @@ Partial Class uc_ManageInventory
         lvInventoryDataGrid = New uc_DataGrid()
         MaterialCard1 = New MaterialSkin.Controls.MaterialCard()
         MaterialCard2 = New MaterialSkin.Controls.MaterialCard()
-        btnDelete = New MaterialSkin.Controls.MaterialButton()
         btnImport = New MaterialSkin.Controls.MaterialButton()
+        btnDelete = New MaterialSkin.Controls.MaterialButton()
         MaterialCard1.SuspendLayout()
         MaterialCard2.SuspendLayout()
         SuspendLayout()
@@ -45,19 +45,20 @@ Partial Class uc_ManageInventory
         ' btnAddProduct
         ' 
         btnAddProduct.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        btnAddProduct.AutoSize = False
         btnAddProduct.AutoSizeMode = AutoSizeMode.GrowAndShrink
         btnAddProduct.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default
         btnAddProduct.Depth = 0
         btnAddProduct.HighEmphasis = True
         btnAddProduct.Icon = Nothing
-        btnAddProduct.Location = New Point(659, 32)
+        btnAddProduct.Location = New Point(661, 13)
         btnAddProduct.Margin = New Padding(4, 6, 4, 6)
         btnAddProduct.MouseState = MaterialSkin.MouseState.HOVER
         btnAddProduct.Name = "btnAddProduct"
         btnAddProduct.NoAccentTextColor = Color.Empty
         btnAddProduct.Size = New Size(121, 36)
         btnAddProduct.TabIndex = 0
-        btnAddProduct.Text = "Add Product"
+        btnAddProduct.Text = "Add"
         btnAddProduct.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
         btnAddProduct.UseAccentColor = False
         btnAddProduct.UseVisualStyleBackColor = True
@@ -165,7 +166,7 @@ Partial Class uc_ManageInventory
         btnEdit.Depth = 0
         btnEdit.HighEmphasis = True
         btnEdit.Icon = Nothing
-        btnEdit.Location = New Point(658, 109)
+        btnEdit.Location = New Point(661, 61)
         btnEdit.Margin = New Padding(4, 6, 4, 6)
         btnEdit.MouseState = MaterialSkin.MouseState.HOVER
         btnEdit.Name = "btnEdit"
@@ -185,7 +186,7 @@ Partial Class uc_ManageInventory
         btnSearchProduct.Depth = 0
         btnSearchProduct.HighEmphasis = True
         btnSearchProduct.Icon = Nothing
-        btnSearchProduct.Location = New Point(286, 109)
+        btnSearchProduct.Location = New Point(282, 109)
         btnSearchProduct.Margin = New Padding(4, 6, 4, 6)
         btnSearchProduct.MouseState = MaterialSkin.MouseState.HOVER
         btnSearchProduct.Name = "btnSearchProduct"
@@ -277,27 +278,6 @@ Partial Class uc_ManageInventory
         MaterialCard2.Size = New Size(797, 170)
         MaterialCard2.TabIndex = 11
         ' 
-        ' btnDelete
-        ' 
-        btnDelete.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnDelete.AutoSize = False
-        btnDelete.AutoSizeMode = AutoSizeMode.GrowAndShrink
-        btnDelete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default
-        btnDelete.Depth = 0
-        btnDelete.HighEmphasis = True
-        btnDelete.Icon = Nothing
-        btnDelete.Location = New Point(505, 109)
-        btnDelete.Margin = New Padding(4, 6, 4, 6)
-        btnDelete.MouseState = MaterialSkin.MouseState.HOVER
-        btnDelete.Name = "btnDelete"
-        btnDelete.NoAccentTextColor = Color.Empty
-        btnDelete.Size = New Size(140, 36)
-        btnDelete.TabIndex = 11
-        btnDelete.Text = "REMOVE PRODUCT"
-        btnDelete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
-        btnDelete.UseAccentColor = False
-        btnDelete.UseVisualStyleBackColor = True
-        ' 
         ' btnImport
         ' 
         btnImport.Anchor = AnchorStyles.Top Or AnchorStyles.Right
@@ -307,7 +287,7 @@ Partial Class uc_ManageInventory
         btnImport.Depth = 0
         btnImport.HighEmphasis = True
         btnImport.Icon = Nothing
-        btnImport.Location = New Point(658, 70)
+        btnImport.Location = New Point(515, 109)
         btnImport.Margin = New Padding(4, 6, 4, 6)
         btnImport.MouseState = MaterialSkin.MouseState.HOVER
         btnImport.Name = "btnImport"
@@ -318,6 +298,27 @@ Partial Class uc_ManageInventory
         btnImport.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
         btnImport.UseAccentColor = False
         btnImport.UseVisualStyleBackColor = True
+        ' 
+        ' btnDelete
+        ' 
+        btnDelete.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        btnDelete.AutoSize = False
+        btnDelete.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        btnDelete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default
+        btnDelete.Depth = 0
+        btnDelete.HighEmphasis = True
+        btnDelete.Icon = Nothing
+        btnDelete.Location = New Point(660, 109)
+        btnDelete.Margin = New Padding(4, 6, 4, 6)
+        btnDelete.MouseState = MaterialSkin.MouseState.HOVER
+        btnDelete.Name = "btnDelete"
+        btnDelete.NoAccentTextColor = Color.Empty
+        btnDelete.Size = New Size(122, 36)
+        btnDelete.TabIndex = 11
+        btnDelete.Text = "REMOVE"
+        btnDelete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
+        btnDelete.UseAccentColor = False
+        btnDelete.UseVisualStyleBackColor = True
         ' 
         ' uc_ManageInventory
         ' 

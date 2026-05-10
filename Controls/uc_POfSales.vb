@@ -29,7 +29,11 @@ Public Class uc_POfSales
         ResizeCurrentOrderColumns()
 
         AddHandler Database.InventoryChange, AddressOf Me.pos_DataGrid.RefreshList
+        AddHandler pos_DataGrid.SortApplied, AddressOf ClearSearch
+    End Sub
 
+    Private Sub ClearSearch()
+        posSearchBar.Clear()
     End Sub
 
     Private Sub ResizeCurrentOrderColumns()
@@ -192,11 +196,6 @@ Public Class uc_POfSales
             selectedQuantities.Clear()
             posSearchBar.Text = ""
             pos_DataGrid.RefreshList()
-
-            Dim mainForm = DirectCast(Me.FindForm(), MainWindow)
-            If mainForm IsNot Nothing Then
-                mainForm.Uc_ManageInventory1.Refreshdata()
-            End If
         End If
     End Sub
 

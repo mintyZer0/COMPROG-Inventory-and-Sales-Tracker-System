@@ -1,6 +1,7 @@
 ﻿Imports MaterialSkin.Controls
 
 Public Class uc_DataGrid
+    Public Event SortApplied()
     Private nameToggle As Boolean = True
     Private priceToggle As Boolean = True
     Private stockToggle As Boolean = True
@@ -64,12 +65,18 @@ Public Class uc_DataGrid
                 Return
         End Select
 
+        RaiseEvent SortApplied()
         RefreshList()
     End Sub
 
     Public Sub SearchList(searched As String)
+
+        nameToggle = True
+        priceToggle = True
+        stockToggle = True
+
         DataGrid.Items.Clear()
-        Dim word As String = searched
+        Dim word As String = searched.ToLower()
 
         For i As Integer = 0 To Database.GetProductCount() - 1
             Dim productName As String = Database.GetProductName(i).ToLower()

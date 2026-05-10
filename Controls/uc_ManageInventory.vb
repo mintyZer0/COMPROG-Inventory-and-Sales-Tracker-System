@@ -47,6 +47,12 @@ Public Class uc_ManageInventory
 
     Private Sub uc_ManageInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lvInventoryDataGrid.ResizeColumns()
+        AddHandler lvInventoryDataGrid.SortApplied, AddressOf ClearSearch
+        AddHandler Database.InventoryChange, AddressOf Me.Refreshdata
+    End Sub
+
+    Private Sub ClearSearch()
+        txtSearch.Clear()
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click

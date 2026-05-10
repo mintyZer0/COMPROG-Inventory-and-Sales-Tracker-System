@@ -354,6 +354,38 @@ Public Class InventorySystem
         soldCounts(secondIndex) = tempSold
     End Sub
 
+    Public Function GetSoldCountInRange(prodName As String, startDate As DateTime, endDate As DateTime) As Integer
+        Dim totalUnits As Integer = 0
+        For i As Integer = 0 To detailCount - 1
+            Dim transIdx = detailTransIndices(i)
+            If transIdx >= 0 AndAlso transIdx < transactionCount Then
+                Dim transDate As DateTime
+                If DateTime.TryParse(transTimestamps(transIdx), transDate) Then
+                    If transDate >= startDate AndAlso transDate <= endDate AndAlso detailProdNames(i) = prodName Then
+                        totalUnits += detailQuantities(i)
+                    End If
+                End If
+            End If
+        Next
+        Return totalUnits
+    End Function
+
+    Public Function GetRevenueInRange(prodName As String, startDate As DateTime, endDate As DateTime) As Double
+        Dim totalRev As Double = 0
+        For i As Integer = 0 To detailCount - 1
+            Dim transIdx = detailTransIndices(i)
+            If transIdx >= 0 AndAlso transIdx < transactionCount Then
+                Dim transDate As DateTime
+                If DateTime.TryParse(transTimestamps(transIdx), transDate) Then
+                    If transDate >= startDate AndAlso transDate <= endDate AndAlso detailProdNames(i) = prodName Then
+                        totalRev += (detailQuantities(i) * detailProdPrices(i))
+                    End If
+                End If
+            End If
+        Next
+        Return totalRev
+    End Function
+
     Public Sub RecordTransaction(timestamp As String, itemIndices() As Integer, quantities() As Integer)
         ' 1. Input Validation
         If itemIndices Is Nothing OrElse quantities Is Nothing OrElse itemIndices.Length <> quantities.Length Then

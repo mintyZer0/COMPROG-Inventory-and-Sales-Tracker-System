@@ -30,7 +30,12 @@ Partial Class uc_Reports
         colUnitsSold = New ColumnHeader()
         colRevenue = New ColumnHeader()
         btnExport = New MaterialSkin.Controls.MaterialButton()
-        lblExportText = New MaterialSkin.Controls.MaterialLabel()
+
+        cmbDateRange = New MaterialSkin.Controls.MaterialComboBox()
+        pnlCustomRange = New Panel()
+        dtpStart = New DateTimePicker()
+        dtpEnd = New DateTimePicker()
+        cmbExportFormat = New MaterialSkin.Controls.MaterialComboBox()
         MaterialCard6.SuspendLayout()
         SuspendLayout()
         ' 
@@ -120,25 +125,87 @@ Partial Class uc_Reports
         btnExport.UseAccentColor = False
         btnExport.UseVisualStyleBackColor = True
         ' 
-        ' lblExportText
+        ' cmbDateRange
         ' 
-        lblExportText.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        lblExportText.AutoSize = True
-        lblExportText.Depth = 0
-        lblExportText.Font = New Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel)
-        lblExportText.FontType = MaterialSkin.MaterialSkinManager.fontType.H6
-        lblExportText.Location = New Point(504, 26)
-        lblExportText.MouseState = MaterialSkin.MouseState.HOVER
-        lblExportText.Name = "lblExportText"
-        lblExportText.Size = New Size(141, 24)
-        lblExportText.TabIndex = 0
-        lblExportText.Text = "Export to HTML"
+        cmbDateRange.AutoResize = False
+        cmbDateRange.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
+        cmbDateRange.Depth = 0
+        cmbDateRange.DrawMode = DrawMode.OwnerDrawVariable
+        cmbDateRange.DropDownHeight = 174
+        cmbDateRange.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbDateRange.DropDownWidth = 121
+        cmbDateRange.Font = New Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel)
+        cmbDateRange.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
+        cmbDateRange.FormattingEnabled = True
+        cmbDateRange.Hint = "Date Range"
+        cmbDateRange.IntegralHeight = False
+        cmbDateRange.ItemHeight = 43
+        cmbDateRange.Items.AddRange(New Object() {"All Time", "This Week", "This Month", "This Year", "Custom Range"})
+        cmbDateRange.Location = New Point(14, 14)
+        cmbDateRange.MaxDropDownItems = 4
+        cmbDateRange.MouseState = MaterialSkin.MouseState.OUT
+        cmbDateRange.Name = "cmbDateRange"
+        cmbDateRange.Size = New Size(180, 49)
+        cmbDateRange.StartIndex = 0
+        cmbDateRange.TabIndex = 8
+        ' 
+        ' pnlCustomRange
+        ' 
+        pnlCustomRange.Controls.Add(dtpStart)
+        pnlCustomRange.Controls.Add(dtpEnd)
+        pnlCustomRange.Location = New Point(200, 14)
+        pnlCustomRange.Name = "pnlCustomRange"
+        pnlCustomRange.Size = New Size(240, 49)
+        pnlCustomRange.TabIndex = 9
+        pnlCustomRange.Visible = False
+        ' 
+        ' dtpStart
+        ' 
+        dtpStart.Format = DateTimePickerFormat.Short
+        dtpStart.Location = New Point(3, 12)
+        dtpStart.Name = "dtpStart"
+        dtpStart.Size = New Size(110, 23)
+        dtpStart.TabIndex = 0
+        ' 
+        ' dtpEnd
+        ' 
+        dtpEnd.Format = DateTimePickerFormat.Short
+        dtpEnd.Location = New Point(127, 12)
+        dtpEnd.Name = "dtpEnd"
+        dtpEnd.Size = New Size(110, 23)
+        dtpEnd.TabIndex = 1
+        ' 
+        ' cmbExportFormat
+        ' 
+        cmbExportFormat.AutoResize = False
+        cmbExportFormat.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
+        cmbExportFormat.Depth = 0
+        cmbExportFormat.DrawMode = DrawMode.OwnerDrawVariable
+        cmbExportFormat.DropDownHeight = 174
+        cmbExportFormat.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbExportFormat.DropDownWidth = 121
+        cmbExportFormat.Font = New Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel)
+        cmbExportFormat.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
+        cmbExportFormat.FormattingEnabled = True
+        cmbExportFormat.Hint = "Export Format"
+        cmbExportFormat.IntegralHeight = False
+        cmbExportFormat.ItemHeight = 43
+        cmbExportFormat.Items.AddRange(New Object() {"HTML", "CSV/Excel (Coming Soon)", "PDF (Coming Soon)"})
+        cmbExportFormat.Location = New Point(450, 14)
+        cmbExportFormat.MaxDropDownItems = 4
+        cmbExportFormat.MouseState = MaterialSkin.MouseState.OUT
+        cmbExportFormat.Name = "cmbExportFormat"
+        cmbExportFormat.Size = New Size(180, 49)
+        cmbExportFormat.StartIndex = 0
+        cmbExportFormat.TabIndex = 10
         ' 
         ' uc_Reports
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        Controls.Add(lblExportText)
+        Controls.Add(cmbExportFormat)
+        Controls.Add(pnlCustomRange)
+        Controls.Add(cmbDateRange)
         Controls.Add(btnExport)
         Controls.Add(MaterialCard6)
         MinimumSize = New Size(825, 471)
@@ -158,4 +225,9 @@ Partial Class uc_Reports
     Friend WithEvents colIndex As ColumnHeader
     Friend WithEvents btnExport As MaterialSkin.Controls.MaterialButton
     Friend WithEvents lblExportText As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents cmbDateRange As MaterialSkin.Controls.MaterialComboBox
+    Friend WithEvents pnlCustomRange As Panel
+    Friend WithEvents dtpStart As DateTimePicker
+    Friend WithEvents dtpEnd As DateTimePicker
+    Friend WithEvents cmbExportFormat As MaterialSkin.Controls.MaterialComboBox
 End Class

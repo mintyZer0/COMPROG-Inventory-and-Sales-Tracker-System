@@ -26,6 +26,7 @@ Partial Class uc_Reports
         lvSalesReport = New MaterialSkin.Controls.MaterialListView()
         colIndex = New ColumnHeader()
         colName = New ColumnHeader()
+        colPrice = New ColumnHeader()
         colUnitsSold = New ColumnHeader()
         colRevenue = New ColumnHeader()
         btnExport = New MaterialSkin.Controls.MaterialButton()
@@ -54,7 +55,7 @@ Partial Class uc_Reports
         lvSalesReport.AutoSizeTable = False
         lvSalesReport.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
         lvSalesReport.BorderStyle = BorderStyle.None
-        lvSalesReport.Columns.AddRange(New ColumnHeader() {colIndex, colName, colUnitsSold, colRevenue})
+        lvSalesReport.Columns.AddRange(New ColumnHeader() {colIndex, colName, colPrice, colUnitsSold, colRevenue})
         lvSalesReport.Depth = 0
         lvSalesReport.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lvSalesReport.FullRowSelect = True
@@ -80,6 +81,12 @@ Partial Class uc_Reports
         colName.TextAlign = HorizontalAlignment.Center
         colName.Width = 200
         ' 
+        ' colPrice
+        ' 
+        colPrice.Text = "Price"
+        colPrice.TextAlign = HorizontalAlignment.Center
+        colPrice.Width = 200
+        ' 
         ' colUnitsSold
         ' 
         colUnitsSold.Text = "Units Sold"
@@ -88,7 +95,7 @@ Partial Class uc_Reports
         ' 
         ' colRevenue
         ' 
-        colRevenue.Text = "Item Revenue"
+        colRevenue.Text = "Total Item Revenue"
         colRevenue.TextAlign = HorizontalAlignment.Center
         colRevenue.Width = 200
         ' 
@@ -145,6 +152,7 @@ Partial Class uc_Reports
     Friend WithEvents MaterialCard6 As MaterialSkin.Controls.MaterialCard
     Friend WithEvents lvSalesReport As MaterialSkin.Controls.MaterialListView
     Friend WithEvents colName As ColumnHeader
+    Friend WithEvents colPrice As ColumnHeader
     Friend WithEvents colUnitsSold As ColumnHeader
     Friend WithEvents colRevenue As ColumnHeader
     Friend WithEvents colIndex As ColumnHeader

@@ -2,12 +2,12 @@
 Imports System.IO
 Imports MaterialSkin
 
-Public Class uc_POfSales
+Public Class uc_POS
     Private selectedQuantities As New Dictionary(Of Integer, Integer)
 
     Private qtySpinner As New NumericUpDown()
 
-    Private Sub uc_POfsales_load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub uc_POS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If lvCurrentOrder.Columns.Count = 0 Then
             lvCurrentOrder.Columns.Add("Name", 120)
             lvCurrentOrder.Columns.Add("Price", 100)
@@ -45,7 +45,7 @@ Public Class uc_POfSales
         End If
     End Sub
 
-    Private Sub uc_POfSales_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+    Private Sub uc_POS_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         ResizeCurrentOrderColumns()
     End Sub
 

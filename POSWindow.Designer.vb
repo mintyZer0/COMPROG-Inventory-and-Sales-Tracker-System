@@ -17,7 +17,7 @@ Partial Class POSWindow
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        posControl = New uc_POfSales()
+        posControl = New uc_POS()
         btnLogOut = New Button()
         SuspendLayout()
         ' 
@@ -55,6 +55,6 @@ Partial Class POSWindow
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents posControl As uc_POfSales
+    Friend WithEvents posControl As uc_POS
     Friend WithEvents btnLogOut As Button
 End Class

@@ -37,7 +37,7 @@ Partial Class Login
         txtUsername.BackgroundImageLayout = ImageLayout.None
         txtUsername.CharacterCasing = CharacterCasing.Normal
         txtUsername.Depth = 0
-        txtUsername.Font = New Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel)
+        txtUsername.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtUsername.HideSelection = True
         txtUsername.LeadingIcon = Nothing
         txtUsername.Location = New Point(309, 152)

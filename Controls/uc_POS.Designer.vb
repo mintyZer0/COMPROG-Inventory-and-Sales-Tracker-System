@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class uc_POfSales
+Partial Class uc_POS
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
@@ -209,7 +209,7 @@ Partial Class uc_POfSales
         posSearchBar.UseSystemPasswordChar = False
         posSearchBar.UseTallSize = False
         ' 
-        ' uc_POfSales
+        ' uc_POS
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -217,7 +217,7 @@ Partial Class uc_POfSales
         Controls.Add(MaterialCard1)
         Controls.Add(crdCurrentOrder)
         MinimumSize = New Size(825, 471)
-        Name = "uc_POfSales"
+        Name = "uc_POS"
         Size = New Size(825, 471)
         MaterialCard1.ResumeLayout(False)
         crdCurrentOrder.ResumeLayout(False)

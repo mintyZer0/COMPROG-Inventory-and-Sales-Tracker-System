@@ -9,6 +9,7 @@
             Dim row As New ListViewItem(i + 1)
             row.Tag = i
             row.SubItems.Add(Database.GetProductName(i).ToString())
+            row.SubItems.Add("₱" & Database.GetProductPrice(i).ToString("F2"))
             row.SubItems.Add(Database.GetSoldCount(i).ToString())
             row.SubItems.Add("₱" & Database.GetItemRevenue(i).ToString("F2"))
             lvSalesReport.Items.Add(row)
@@ -20,9 +21,10 @@
         If lvSalesReport.Columns.Count > 0 Then
             Dim totalWidth As Integer = lvSalesReport.ClientSize.Width
             lvSalesReport.Columns(0).Width = totalWidth * 0.1
-            lvSalesReport.Columns(1).Width = totalWidth * 0.4
-            lvSalesReport.Columns(2).Width = totalWidth * 0.25
-            lvSalesReport.Columns(3).Width = totalWidth * 0.25
+            lvSalesReport.Columns(1).Width = totalWidth * 0.3
+            lvSalesReport.Columns(2).Width = totalWidth * 0.2
+            lvSalesReport.Columns(3).Width = totalWidth * 0.2
+            lvSalesReport.Columns(4).Width = totalWidth * 0.2
         End If
     End Sub
 

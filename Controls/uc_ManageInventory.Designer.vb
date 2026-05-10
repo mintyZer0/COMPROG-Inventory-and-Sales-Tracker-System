@@ -37,6 +37,7 @@ Partial Class uc_ManageInventory
         MaterialCard1 = New MaterialSkin.Controls.MaterialCard()
         MaterialCard2 = New MaterialSkin.Controls.MaterialCard()
         btnDelete = New MaterialSkin.Controls.MaterialButton()
+        btnImport = New MaterialSkin.Controls.MaterialButton()
         MaterialCard1.SuspendLayout()
         MaterialCard2.SuspendLayout()
         SuspendLayout()
@@ -253,6 +254,7 @@ Partial Class uc_ManageInventory
         ' 
         MaterialCard2.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         MaterialCard2.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
+        MaterialCard2.Controls.Add(btnImport)
         MaterialCard2.Controls.Add(btnDelete)
         MaterialCard2.Controls.Add(txtPrice)
         MaterialCard2.Controls.Add(btnEdit)
@@ -296,6 +298,27 @@ Partial Class uc_ManageInventory
         btnDelete.UseAccentColor = False
         btnDelete.UseVisualStyleBackColor = True
         ' 
+        ' btnImport
+        ' 
+        btnImport.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        btnImport.AutoSize = False
+        btnImport.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        btnImport.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default
+        btnImport.Depth = 0
+        btnImport.HighEmphasis = True
+        btnImport.Icon = Nothing
+        btnImport.Location = New Point(658, 70)
+        btnImport.Margin = New Padding(4, 6, 4, 6)
+        btnImport.MouseState = MaterialSkin.MouseState.HOVER
+        btnImport.Name = "btnImport"
+        btnImport.NoAccentTextColor = Color.Empty
+        btnImport.Size = New Size(121, 36)
+        btnImport.TabIndex = 12
+        btnImport.Text = "Import Data"
+        btnImport.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
+        btnImport.UseAccentColor = False
+        btnImport.UseVisualStyleBackColor = True
+        ' 
         ' uc_ManageInventory
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -325,5 +348,6 @@ Partial Class uc_ManageInventory
     Friend WithEvents MaterialCard1 As MaterialSkin.Controls.MaterialCard
     Friend WithEvents MaterialCard2 As MaterialSkin.Controls.MaterialCard
     Friend WithEvents btnDelete As MaterialSkin.Controls.MaterialButton
+    Friend WithEvents btnImport As MaterialSkin.Controls.MaterialButton
 
 End Class

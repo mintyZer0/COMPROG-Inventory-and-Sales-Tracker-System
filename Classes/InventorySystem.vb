@@ -195,6 +195,33 @@ Public Class InventorySystem
         Return productStocks(index) < 5
     End Function
 
+    Public Sub ImportProduct(name As String, price As Double, stock As Integer, ByRef addedCount As Integer, ByRef updatedCount As Integer)
+        Dim foundIndex As Integer = -1
+        For i As Integer = 0 To productCount - 1
+            If productNames(i).Equals(name, StringComparison.OrdinalIgnoreCase) Then
+                foundIndex = i
+                Exit For
+            End If
+        Next
+
+        If foundIndex <> -1 Then
+            ' Update existing
+            productPrices(foundIndex) = price
+            productStocks(foundIndex) = stock
+            updatedCount += 1
+            RaiseEvent InventoryChange()
+        ElseIf productCount < 100 Then
+            ' Add new
+            productNames(productCount) = name
+            productPrices(productCount) = price
+            productStocks(productCount) = stock
+            soldCounts(productCount) = 0
+            productCount += 1
+            addedCount += 1
+            RaiseEvent InventoryChange()
+        End If
+    End Sub
+
     Public Sub AddNewProduct(name As String, price As Double, initialStock As Integer)
         For i As Integer = 0 To productCount - 1
             If productNames(i) = name Then

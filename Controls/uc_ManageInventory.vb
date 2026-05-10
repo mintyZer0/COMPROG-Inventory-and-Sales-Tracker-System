@@ -78,6 +78,121 @@ Public Class uc_ManageInventory
 
 
     End Sub
+
+    Private Sub btnImport_Click(sender As Object, e As EventArgs) Handles btnImport.Click
+        Using ofd As New OpenFileDialog()
+            ofd.Filter = "CSV Files (*.csv)|*.csv|Excel Workbook (*.xlsx)|*.xlsx"
+            ofd.Title = "Select Import File"
+
+            If ofd.ShowDialog() = DialogResult.OK Then
+                Dim added As Integer = 0
+                Dim updated As Integer = 0
+                Dim failed As Integer = 0
+
+                Try
+                    If ofd.FileName.EndsWith(".csv", StringComparison.OrdinalIgnoreCase) Then
+                        ImportFromCSV(ofd.FileName, added, updated, failed)
+                    ElseIf ofd.FileName.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase) Then
+                        ImportFromExcel(ofd.FileName, added, updated, failed)
+                    End If
+
+                    MsgBox($"Import Complete!{vbCrLf}Added: {added}{vbCrLf}Updated: {updated}{vbCrLf}Failed: {failed}", vbInformation, "Import Summary")
+                    lvInventoryDataGrid.RefreshList()
+                Catch ex As Exception
+                    MsgBox("An error occurred during import: " & ex.Message, vbCritical, "Import Error")
+                End Try
+            End If
+        End Using
+    End Sub
+
+    Private Sub ImportFromCSV(filePath As String, ByRef added As Integer, ByRef updated As Integer, ByRef failed As Integer)
+        Dim lines = System.IO.File.ReadAllLines(filePath)
+        If lines.Length <= 1 Then Return ' Header only or empty
+
+        For i As Integer = 1 To lines.Length - 1 ' Skip header
+            Dim line = lines(i)
+            If String.IsNullOrWhiteSpace(line) Then Continue For
+
+            Dim parts = ParseCSVLine(line)
+            If parts.Count >= 3 Then
+                Dim name = parts(0).Trim()
+                Dim price As Double
+                Dim stock As Integer
+
+                If Double.TryParse(parts(1), price) AndAlso Integer.TryParse(parts(2), stock) Then
+                    Database.ImportProduct(name, price, stock, added, updated)
+                Else
+                    failed += 1
+                End If
+            Else
+                failed += 1
+            End If
+        Next
+    End Sub
+
+    Private Function ParseCSVLine(line As String) As List(Of String)
+        Dim result As New List(Of String)()
+        Dim currentPart As New StringBuilder()
+        Dim inQuotes As Boolean = False
+
+        For i As Integer = 0 To line.Length - 1
+            Dim c = line(i)
+            If c = """"c Then
+                inQuotes = Not inQuotes
+            ElseIf c = ","c AndAlso Not inQuotes Then
+                result.Add(currentPart.ToString())
+                currentPart.Clear()
+            Else
+                currentPart.Append(c)
+            End If
+        Next
+        result.Add(currentPart.ToString())
+        Return result
+    End Function
+
+    Private Sub ImportFromExcel(filePath As String, ByRef added As Integer, ByRef updated As Integer, ByRef failed As Integer)
+        Dim excelApp As Object = Nothing
+        Dim workbook As Object = Nothing
+        Dim sheet As Object = Nothing
+
+        Try
+            excelApp = CreateObject("Excel.Application")
+            workbook = excelApp.Workbooks.Open(filePath)
+            sheet = workbook.Sheets(1)
+
+            Dim row As Integer = 2 ' Skip header
+            While True
+                Dim name = Convert.ToString(sheet.Cells(row, 1).Value)
+                If String.IsNullOrEmpty(name) Then Exit While
+
+                Dim priceVal = sheet.Cells(row, 2).Value
+                Dim stockVal = sheet.Cells(row, 3).Value
+
+                Dim price As Double
+                Dim stock As Integer
+
+                If priceVal IsNot Nothing AndAlso stockVal IsNot Nothing AndAlso
+                   Double.TryParse(priceVal.ToString(), price) AndAlso
+                   Integer.TryParse(stockVal.ToString(), stock) Then
+                    Database.ImportProduct(name, price, stock, added, updated)
+                Else
+                    failed += 1
+                End If
+
+                row += 1
+            End While
+        Finally
+            If workbook IsNot Nothing Then
+                workbook.Close(False)
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(workbook)
+            End If
+            If excelApp IsNot Nothing Then
+                excelApp.Quit()
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp)
+            End If
+        End Try
+    End Sub
+
     Private Sub DeleteMultipleProducts()
         For i As Integer = lvInventoryDataGrid.DataGrid.SelectedIndices.Count - 1 To 0 Step -1
             Dim selectedProduct As Integer = lvInventoryDataGrid.DataGrid.SelectedIndices(i)

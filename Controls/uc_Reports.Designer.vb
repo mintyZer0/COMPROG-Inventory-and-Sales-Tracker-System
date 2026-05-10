@@ -29,6 +29,7 @@ Partial Class uc_Reports
         colPrice = New ColumnHeader()
         colUnitsSold = New ColumnHeader()
         colRevenue = New ColumnHeader()
+        colLastSold = New ColumnHeader()
         btnExport = New MaterialSkin.Controls.MaterialButton()
 
         cmbDateRange = New MaterialSkin.Controls.MaterialComboBox()
@@ -60,7 +61,7 @@ Partial Class uc_Reports
         lvSalesReport.AutoSizeTable = False
         lvSalesReport.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
         lvSalesReport.BorderStyle = BorderStyle.None
-        lvSalesReport.Columns.AddRange(New ColumnHeader() {colIndex, colName, colPrice, colUnitsSold, colRevenue})
+        lvSalesReport.Columns.AddRange(New ColumnHeader() {colIndex, colName, colPrice, colUnitsSold, colRevenue, colLastSold})
         lvSalesReport.Depth = 0
         lvSalesReport.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lvSalesReport.FullRowSelect = True
@@ -103,6 +104,12 @@ Partial Class uc_Reports
         colRevenue.Text = "Total Item Revenue"
         colRevenue.TextAlign = HorizontalAlignment.Center
         colRevenue.Width = 200
+        ' 
+        ' colLastSold
+        ' 
+        colLastSold.Text = "Last Sold Date"
+        colLastSold.TextAlign = HorizontalAlignment.Center
+        colLastSold.Width = 200
         ' 
         ' btnExport
         ' 
@@ -222,6 +229,7 @@ Partial Class uc_Reports
     Friend WithEvents colPrice As ColumnHeader
     Friend WithEvents colUnitsSold As ColumnHeader
     Friend WithEvents colRevenue As ColumnHeader
+    Friend WithEvents colLastSold As ColumnHeader
     Friend WithEvents colIndex As ColumnHeader
     Friend WithEvents btnExport As MaterialSkin.Controls.MaterialButton
     Friend WithEvents lblExportText As MaterialSkin.Controls.MaterialLabel

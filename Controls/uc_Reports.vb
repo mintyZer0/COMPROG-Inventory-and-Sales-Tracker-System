@@ -35,11 +35,14 @@
 
             If units > 0 Then
                 Dim revenue = Database.GetRevenueInRange(pName, startDate, endDate)
+                Dim lastSold = Database.GetLastSoldDate(pName)
+
                 Dim row As New ListViewItem(lvSalesReport.Items.Count + 1)
                 row.SubItems.Add(pName)
                 row.SubItems.Add("₱" & Database.GetProductPrice(i).ToString("F2"))
                 row.SubItems.Add(units.ToString())
                 row.SubItems.Add("₱" & revenue.ToString("F2"))
+                row.SubItems.Add(lastSold)
                 lvSalesReport.Items.Add(row)
             End If
         Next
@@ -151,13 +154,14 @@
     End Sub
 
     Private Sub ResizeColumns()
-        If lvSalesReport.Columns.Count > 0 Then
+        If lvSalesReport.Columns.Count >= 6 Then
             Dim totalWidth As Integer = lvSalesReport.ClientSize.Width
-            lvSalesReport.Columns(0).Width = totalWidth * 0.1
-            lvSalesReport.Columns(1).Width = totalWidth * 0.3
-            lvSalesReport.Columns(2).Width = totalWidth * 0.2
-            lvSalesReport.Columns(3).Width = totalWidth * 0.2
+            lvSalesReport.Columns(0).Width = totalWidth * 0.05
+            lvSalesReport.Columns(1).Width = totalWidth * 0.25
+            lvSalesReport.Columns(2).Width = totalWidth * 0.15
+            lvSalesReport.Columns(3).Width = totalWidth * 0.15
             lvSalesReport.Columns(4).Width = totalWidth * 0.2
+            lvSalesReport.Columns(5).Width = totalWidth * 0.2
         End If
     End Sub
 

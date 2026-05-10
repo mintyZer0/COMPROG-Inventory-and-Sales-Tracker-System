@@ -448,6 +448,18 @@ Public Class InventorySystem
         RaiseEvent InventoryChange()
     End Sub
 
+    Public Function GetLastSoldDate(prodName As String) As String
+        For i As Integer = transactionCount - 1 To 0 Step -1
+            ' Check all detail lines for this transaction
+            For j As Integer = 0 To detailCount - 1
+                If detailTransIndices(j) = i AndAlso detailProdNames(j) = prodName Then
+                    Return transTimestamps(i)
+                End If
+            Next
+        Next
+        Return "Never"
+    End Function
+
     Public Sub DeleteProduct(selectedIndex As Integer)
         For i As Integer = selectedIndex To productCount - 2
             productNames(i) = productNames(i + 1)

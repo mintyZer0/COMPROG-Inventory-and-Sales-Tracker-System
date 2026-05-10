@@ -271,13 +271,13 @@ Partial Class uc_Dashboard
         lbHighestSelling.BorderColor = Color.LightGray
         lbHighestSelling.Depth = 0
         lbHighestSelling.Font = New Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel)
-        lbHighestSelling.Location = New Point(23, 44)
+        lbHighestSelling.Location = New Point(23, 41)
         lbHighestSelling.MouseState = MaterialSkin.MouseState.HOVER
         lbHighestSelling.Name = "lbHighestSelling"
         lbHighestSelling.SelectedIndex = -1
         lbHighestSelling.SelectedItem = Nothing
         lbHighestSelling.ShowScrollBar = True
-        lbHighestSelling.Size = New Size(363, 100)
+        lbHighestSelling.Size = New Size(363, 126)
         lbHighestSelling.Style = MaterialSkin.Controls.MaterialListBox.ListBoxStyle.TwoLine
         lbHighestSelling.TabIndex = 7
         ' 
@@ -294,7 +294,7 @@ Partial Class uc_Dashboard
         MaterialCard7.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard7.Name = "MaterialCard7"
         MaterialCard7.Padding = New Padding(14)
-        MaterialCard7.Size = New Size(403, 150)
+        MaterialCard7.Size = New Size(403, 176)
         MaterialCard7.TabIndex = 8
         ' 
         ' pnlMostSold
@@ -332,7 +332,7 @@ Partial Class uc_Dashboard
         MaterialCard_LeastSold.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard_LeastSold.Name = "MaterialCard_LeastSold"
         MaterialCard_LeastSold.Padding = New Padding(14)
-        MaterialCard_LeastSold.Size = New Size(405, 150)
+        MaterialCard_LeastSold.Size = New Size(403, 176)
         MaterialCard_LeastSold.TabIndex = 11
         ' 
         ' pnlLeastSold
@@ -362,13 +362,13 @@ Partial Class uc_Dashboard
         lbLeastSelling.BorderColor = Color.LightGray
         lbLeastSelling.Depth = 0
         lbLeastSelling.Font = New Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel)
-        lbLeastSelling.Location = New Point(23, 44)
+        lbLeastSelling.Location = New Point(23, 41)
         lbLeastSelling.MouseState = MaterialSkin.MouseState.HOVER
         lbLeastSelling.Name = "lbLeastSelling"
         lbLeastSelling.SelectedIndex = -1
         lbLeastSelling.SelectedItem = Nothing
         lbLeastSelling.ShowScrollBar = True
-        lbLeastSelling.Size = New Size(359, 100)
+        lbLeastSelling.Size = New Size(363, 126)
         lbLeastSelling.Style = MaterialSkin.Controls.MaterialListBox.ListBoxStyle.TwoLine
         lbLeastSelling.TabIndex = 10
         ' 
@@ -380,7 +380,7 @@ Partial Class uc_Dashboard
         MaterialCard_LowStock.Controls.Add(lbLowStock)
         MaterialCard_LowStock.Depth = 0
         MaterialCard_LowStock.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
-        MaterialCard_LowStock.Location = New Point(14, 296)
+        MaterialCard_LowStock.Location = New Point(14, 313)
         MaterialCard_LowStock.Margin = New Padding(14)
         MaterialCard_LowStock.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard_LowStock.Name = "MaterialCard_LowStock"
@@ -434,7 +434,7 @@ Partial Class uc_Dashboard
         MaterialCard_OutOfStock.Controls.Add(lbOutOfStock)
         MaterialCard_OutOfStock.Depth = 0
         MaterialCard_OutOfStock.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
-        MaterialCard_OutOfStock.Location = New Point(434, 296)
+        MaterialCard_OutOfStock.Location = New Point(434, 313)
         MaterialCard_OutOfStock.Margin = New Padding(14)
         MaterialCard_OutOfStock.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard_OutOfStock.Name = "MaterialCard_OutOfStock"

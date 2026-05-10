@@ -65,25 +65,29 @@
     Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
         Dim dateRangeText As String = cmbDateRange.Text
         If cmbDateRange.Text = "Custom Range" Then
-            dateRangeText &= $" ({dtpStart.Value.ToShortDateString()} - {dtpEnd.Value.ToShortDateString()})"
+            dateRangeText = $"{dtpStart.Value.ToString("yyyy-MM-dd")}_to_{dtpEnd.Value.ToString("yyyy-MM-dd")}"
+        Else
+            dateRangeText = dateRangeText.Replace(" ", "")
         End If
 
         Dim sfd As New SaveFileDialog()
         sfd.Title = "Export Sales Report"
 
         Dim format As String = cmbExportFormat.Text
+        Dim baseFileName As String = $"SalesReport_{dateRangeText}_{DateTime.Now.ToString("yyyyMMdd")}"
+
         If format.StartsWith("CSV") Then
             sfd.Filter = "CSV Files (*.csv)|*.csv"
-            sfd.FileName = "SalesReport_" & DateTime.Now.ToString("yyyyMMdd") & ".csv"
+            sfd.FileName = baseFileName & ".csv"
         ElseIf format = "HTML" Then
             sfd.Filter = "HTML Files (*.html)|*.html"
-            sfd.FileName = "SalesReport_" & DateTime.Now.ToString("yyyyMMdd") & ".html"
+            sfd.FileName = baseFileName & ".html"
         ElseIf format.StartsWith("Excel") Then
             sfd.Filter = "Excel Workbook (*.xlsx)|*.xlsx"
-            sfd.FileName = "SalesReport_" & DateTime.Now.ToString("yyyyMMdd") & ".xlsx"
+            sfd.FileName = baseFileName & ".xlsx"
         ElseIf format = "PDF" Then
             sfd.Filter = "PDF Files (*.pdf)|*.pdf"
-            sfd.FileName = "SalesReport_" & DateTime.Now.ToString("yyyyMMdd") & ".pdf"
+            sfd.FileName = baseFileName & ".pdf"
         Else
             MessageBox.Show("This export format is not yet implemented.", "Format Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
@@ -111,57 +115,39 @@
             excelApp = CreateObject("Excel.Application")
             workbook = excelApp.Workbooks.Add()
             sheet = workbook.Sheets(1)
-            sheet.Name = "Sales Report"
+            sheet.Name = "Sales Data"
 
-            ' Headers
-            sheet.Cells(1, 1).Value = "Sales Report"
-            sheet.Cells(2, 1).Value = "Range: " & dateRangeText
-            sheet.Cells(3, 1).Value = "Generated: " & DateTime.Now.ToString("f")
-
-            Dim rowOffset As Integer = 5
+            ' Headers start at Row 1, Column 1
             For i As Integer = 0 To lvSalesReport.Columns.Count - 1
-                sheet.Cells(rowOffset, i + 1).Value = lvSalesReport.Columns(i).Text
-                sheet.Cells(rowOffset, i + 1).Font.Bold = True
+                sheet.Cells(1, i + 1).Value = lvSalesReport.Columns(i).Text
+                sheet.Cells(1, i + 1).Font.Bold = True
+                sheet.Cells(1, i + 1).Interior.Color = RGB(240, 240, 240)
             Next
 
-            ' Data
-            Dim currentExcelRow As Integer = rowOffset + 1
+            ' Data starts at Row 2
+            Dim currentExcelRow As Integer = 2
             For Each item As ListViewItem In lvSalesReport.Items
                 sheet.Cells(currentExcelRow, 1).Value = item.SubItems(0).Text ' Index
                 sheet.Cells(currentExcelRow, 2).Value = item.SubItems(1).Text ' Name
 
-                ' Price (Col 3 / C)
+                ' Price
                 Dim price As Double = 0
                 Double.TryParse(item.SubItems(2).Text.Replace("₱", "").Replace(",", "").Trim(), price)
                 sheet.Cells(currentExcelRow, 3).Value = price
 
-                ' Units (Col 4 / D)
+                ' Units
                 Dim units As Integer = 0
                 Integer.TryParse(item.SubItems(3).Text, units)
                 sheet.Cells(currentExcelRow, 4).Value = units
 
-                ' Revenue Formula (Col 5 / E): Price * Units
+                ' Revenue Formula (Col E = C * D)
                 sheet.Cells(currentExcelRow, 5).Formula = $"=C{currentExcelRow}*D{currentExcelRow}"
 
-                ' Last Sold (Col 6 / F)
+                ' Last Sold
                 sheet.Cells(currentExcelRow, 6).Value = item.SubItems(5).Text
 
                 currentExcelRow += 1
             Next
-
-            ' Summary
-            Dim lastDataRow As Integer = currentExcelRow - 1
-            currentExcelRow += 1
-            sheet.Cells(currentExcelRow, 3).Value = "TOTALS:"
-            sheet.Cells(currentExcelRow, 3).Font.Bold = True
-
-            ' Total Units Sold Formula (D)
-            sheet.Cells(currentExcelRow, 4).Formula = $"=SUM(D{rowOffset + 1}:D{lastDataRow})"
-            sheet.Cells(currentExcelRow, 4).Font.Bold = True
-
-            ' Total Revenue Formula (E)
-            sheet.Cells(currentExcelRow, 5).Formula = $"=SUM(E{rowOffset + 1}:E{lastDataRow})"
-            sheet.Cells(currentExcelRow, 5).Font.Bold = True
 
             ' Formatting
             sheet.Columns("C:C").NumberFormat = "₱#,##0.00"
@@ -172,7 +158,7 @@
             MessageBox.Show("Excel report exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Catch ex As Exception
-            MessageBox.Show("Error exporting to Excel: " & ex.Message & vbCrLf & "Make sure Microsoft Excel is installed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error exporting to Excel: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             If workbook IsNot Nothing Then workbook.Close(False)
             If excelApp IsNot Nothing Then excelApp.Quit()
@@ -322,13 +308,7 @@
         Try
             Dim csv As New System.Text.StringBuilder()
 
-            ' Metadata
-            csv.AppendLine($"""Sales Report""")
-            csv.AppendLine($"""Range"",""{dateRangeText}""")
-            csv.AppendLine($"""Generated"",""{DateTime.Now.ToString("f")}""")
-            csv.AppendLine()
-
-            ' Column Headers
+            ' Column Headers at Row 1
             Dim headers As New List(Of String)()
             For Each col As ColumnHeader In lvSalesReport.Columns
                 headers.Add($"""{col.Text.Replace("""", """""")}""")
@@ -336,31 +316,13 @@
             csv.AppendLine(String.Join(",", headers))
 
             ' Data Rows
-            Dim totalUnits As Integer = 0
-            Dim totalRevenue As Double = 0
-
             For Each item As ListViewItem In lvSalesReport.Items
                 Dim fields As New List(Of String)()
                 For i As Integer = 0 To item.SubItems.Count - 1
                     fields.Add($"""{item.SubItems(i).Text.Replace("""", """""")}""")
                 Next
                 csv.AppendLine(String.Join(",", fields))
-
-                ' Calculate totals
-                Dim units As Integer = 0
-                Dim revenue As Double = 0
-                Integer.TryParse(item.SubItems(3).Text, units)
-                Dim revText As String = item.SubItems(4).Text.Replace("₱", "").Replace(",", "").Trim()
-                Double.TryParse(revText, revenue)
-
-                totalUnits += units
-                totalRevenue += revenue
             Next
-
-            ' Summary
-            csv.AppendLine()
-            csv.AppendLine($"""Total Units Sold"",""{totalUnits}""")
-            csv.AppendLine($"""Total Revenue"",""₱{totalRevenue.ToString("N2")}""")
 
             System.IO.File.WriteAllText(filePath, csv.ToString(), System.Text.Encoding.UTF8)
             MessageBox.Show("Report exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)

@@ -29,12 +29,15 @@ Partial Class MainWindow
         Uc_ManageInventory1 = New uc_ManageInventory()
         tpReports = New TabPage()
         Uc_Reports = New uc_Reports()
+        tpTransactionLog = New TabPage()
+        Uc_TransactionLog = New uc_TransactionLog()
         dwrSidebar = New MaterialSkin.Controls.MaterialDrawer()
         btnLogOut = New MaterialSkin.Controls.MaterialButton()
         tbMainWindow.SuspendLayout()
         tpDashboard.SuspendLayout()
         tpManageInventory.SuspendLayout()
         tpReports.SuspendLayout()
+        tpTransactionLog.SuspendLayout()
         SuspendLayout()
         ' 
         ' tbMainWindow
@@ -42,6 +45,7 @@ Partial Class MainWindow
         tbMainWindow.Controls.Add(tpDashboard)
         tbMainWindow.Controls.Add(tpManageInventory)
         tbMainWindow.Controls.Add(tpReports)
+        tbMainWindow.Controls.Add(tpTransactionLog)
         tbMainWindow.Depth = 0
         tbMainWindow.Dock = DockStyle.Fill
         tbMainWindow.ImeMode = ImeMode.Disable
@@ -112,6 +116,25 @@ Partial Class MainWindow
         Uc_Reports.Size = New Size(853, 499)
         Uc_Reports.TabIndex = 0
         ' 
+        ' tpTransactionLog
+        ' 
+        tpTransactionLog.Controls.Add(Uc_TransactionLog)
+        tpTransactionLog.Location = New Point(4, 24)
+        tpTransactionLog.Name = "tpTransactionLog"
+        tpTransactionLog.Padding = New Padding(3)
+        tpTransactionLog.Size = New Size(859, 505)
+        tpTransactionLog.TabIndex = 3
+        tpTransactionLog.Text = "History"
+        tpTransactionLog.UseVisualStyleBackColor = True
+        ' 
+        ' Uc_TransactionLog
+        ' 
+        Uc_TransactionLog.Dock = DockStyle.Fill
+        Uc_TransactionLog.Location = New Point(3, 3)
+        Uc_TransactionLog.Name = "Uc_TransactionLog"
+        Uc_TransactionLog.Size = New Size(853, 499)
+        Uc_TransactionLog.TabIndex = 0
+        ' 
         ' dwrSidebar
         ' 
         dwrSidebar.AutoHide = False
@@ -168,15 +191,18 @@ Partial Class MainWindow
         tpDashboard.ResumeLayout(False)
         tpManageInventory.ResumeLayout(False)
         tpReports.ResumeLayout(False)
+        tpTransactionLog.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
     Friend WithEvents tbMainWindow As MaterialSkin.Controls.MaterialTabControl
     Friend WithEvents tpDashboard As TabPage
     Friend WithEvents tpManageInventory As TabPage
     Friend WithEvents tpReports As TabPage
+    Friend WithEvents tpTransactionLog As TabPage
     Friend WithEvents dwrSidebar As MaterialSkin.Controls.MaterialDrawer
     Friend WithEvents Dashboard1 As uc_Dashboard
     Friend WithEvents Uc_ManageInventory1 As uc_ManageInventory
     Friend WithEvents Uc_Reports As uc_Reports
+    Friend WithEvents Uc_TransactionLog As uc_TransactionLog
     Friend WithEvents btnLogOut As MaterialSkin.Controls.MaterialButton
 End Class

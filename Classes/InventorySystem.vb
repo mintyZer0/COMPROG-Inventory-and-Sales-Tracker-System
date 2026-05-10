@@ -10,6 +10,18 @@ Public Class InventorySystem
     Private soldCounts(99) As Integer
     Private productCount As Integer = 0
 
+    ' Transaction Master (Max 100)
+    Private transTimestamps(99) As String
+    Private transTotals(99) As Double
+    Private transactionCount As Integer = 0
+
+    ' Sale Details (Max 500)
+    Private detailTransIndices(499) As Integer ' Foreign Key
+    Private detailProdNames(499) As String
+    Private detailProdPrices(499) As Double
+    Private detailQuantities(499) As Integer
+    Private detailCount As Integer = 0
+
     Public Function GetProductName(prodNameIndex As Integer) As String
         Return productNames(prodNameIndex)
     End Function
@@ -28,6 +40,57 @@ Public Class InventorySystem
     Public Function GetProductCount() As Integer
         Return productCount
     End Function
+
+    Public Function GetTransactionCount() As Integer
+        Return transactionCount
+    End Function
+
+    Public Function GetTransTimestamp(index As Integer) As String
+        If index >= 0 AndAlso index < transactionCount Then
+            Return transTimestamps(index)
+        End If
+        Return ""
+    End Function
+
+    Public Function GetTransTotal(index As Integer) As Double
+        If index >= 0 AndAlso index < transactionCount Then
+            Return transTotals(index)
+        End If
+        Return 0.0
+    End Function
+
+    Public Function GetDetailCount() As Integer
+        Return detailCount
+    End Function
+
+    Public Function GetDetailTransIndex(index As Integer) As Integer
+        If index >= 0 AndAlso index < detailCount Then
+            Return detailTransIndices(index)
+        End If
+        Return -1
+    End Function
+
+    Public Function GetDetailProdName(index As Integer) As String
+        If index >= 0 AndAlso index < detailCount Then
+            Return detailProdNames(index)
+        End If
+        Return ""
+    End Function
+
+    Public Function GetDetailProdPrice(index As Integer) As Double
+        If index >= 0 AndAlso index < detailCount Then
+            Return detailProdPrices(index)
+        End If
+        Return 0.0
+    End Function
+
+    Public Function GetDetailQuantity(index As Integer) As Integer
+        If index >= 0 AndAlso index < detailCount Then
+            Return detailQuantities(index)
+        End If
+        Return 0
+    End Function
+
     Public Function GetLowStockCount() As Integer
         Dim lowStockCount As Integer = 0
         For i As Integer = 0 To productCount - 1
@@ -289,6 +352,68 @@ Public Class InventorySystem
         Dim tempSold = soldCounts(firstIndex)
         soldCounts(firstIndex) = soldCounts(secondIndex)
         soldCounts(secondIndex) = tempSold
+    End Sub
+
+    Public Sub RecordTransaction(timestamp As String, itemIndices() As Integer, quantities() As Integer)
+        ' 1. Input Validation
+        If itemIndices Is Nothing OrElse quantities Is Nothing OrElse itemIndices.Length <> quantities.Length Then
+            Return
+        End If
+
+        ' 2. Space check for Master
+        If transactionCount >= 100 Then
+            MsgBox("Transaction history full!")
+            Return
+        End If
+
+        ' 3. Pre-calculate valid items and detail space requirement
+        Dim validCount As Integer = 0
+        For i As Integer = 0 To itemIndices.Length - 1
+            Dim prodIdx = itemIndices(i)
+            If prodIdx >= 0 AndAlso prodIdx < productCount Then
+                validCount += 1
+            End If
+        Next
+
+        ' If no valid items, nothing to record
+        If validCount = 0 Then Return
+
+        ' 4. Space check for Details
+        If detailCount + validCount > 500 Then
+            MsgBox("Sale details storage full!")
+            Return
+        End If
+
+        ' 5. Record Transaction
+        Dim currentTotal As Double = 0
+
+        ' Record Detail Lines
+        For i As Integer = 0 To itemIndices.Length - 1
+            Dim prodIdx = itemIndices(i)
+
+            ' Validate prodIdx again during recording
+            If prodIdx < 0 OrElse prodIdx >= productCount Then
+                Continue For
+            End If
+
+            Dim qty = quantities(i)
+            Dim price = productPrices(prodIdx)
+
+            detailTransIndices(detailCount) = transactionCount
+            detailProdNames(detailCount) = productNames(prodIdx)
+            detailProdPrices(detailCount) = price
+            detailQuantities(detailCount) = qty
+
+            currentTotal += (price * qty)
+            detailCount += 1
+        Next
+
+        ' Record Master Entry
+        transTimestamps(transactionCount) = timestamp
+        transTotals(transactionCount) = currentTotal
+        transactionCount += 1
+
+        RaiseEvent InventoryChange()
     End Sub
 
     Public Sub DeleteProduct(selectedIndex As Integer)

@@ -1,6 +1,8 @@
 ﻿Imports MaterialSkin
+Imports System.ComponentModel
 
 Public Class MainWindow
+    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
     Public Property WasLogout As Boolean = False
 
     Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load

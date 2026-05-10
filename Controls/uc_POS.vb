@@ -187,6 +187,19 @@ Public Class uc_POS
         Next
 
         If allSuccessful Then
+            Dim timestamp As String = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            Dim itemIndices(lvCurrentOrder.Items.Count - 1) As Integer
+            Dim quantities(lvCurrentOrder.Items.Count - 1) As Integer
+
+            For i As Integer = 0 To lvCurrentOrder.Items.Count - 1
+                Dim index As Integer = CInt(lvCurrentOrder.Items(i).Tag)
+                Dim qty As Integer = CInt(lvCurrentOrder.Items(i).SubItems(2).Text)
+                itemIndices(i) = index
+                quantities(i) = qty
+            Next
+
+            Database.RecordTransaction(timestamp, itemIndices, quantities)
+
             receipt.AppendLine("")
             receipt.AppendLine($"Total: ₱{total:F2}")
             MessageBox.Show(receipt.ToString(), "Purchace Successful", MessageBoxButtons.OK)

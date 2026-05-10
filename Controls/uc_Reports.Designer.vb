@@ -197,7 +197,7 @@ Partial Class uc_Reports
         cmbExportFormat.Hint = "Export Format"
         cmbExportFormat.IntegralHeight = False
         cmbExportFormat.ItemHeight = 43
-        cmbExportFormat.Items.AddRange(New Object() {"HTML", "CSV", "PDF (Coming Soon)"})
+        cmbExportFormat.Items.AddRange(New Object() {"HTML", "CSV", "Excel (.xlsx)", "PDF (Coming Soon)"})
         cmbExportFormat.Location = New Point(450, 14)
         cmbExportFormat.MaxDropDownItems = 4
         cmbExportFormat.MouseState = MaterialSkin.MouseState.OUT

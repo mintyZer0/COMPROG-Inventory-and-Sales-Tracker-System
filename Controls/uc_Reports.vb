@@ -78,6 +78,9 @@
         ElseIf format = "HTML" Then
             sfd.Filter = "HTML Files (*.html)|*.html"
             sfd.FileName = "SalesReport_" & DateTime.Now.ToString("yyyyMMdd") & ".html"
+        ElseIf format.StartsWith("Excel") Then
+            sfd.Filter = "Excel Workbook (*.xlsx)|*.xlsx"
+            sfd.FileName = "SalesReport_" & DateTime.Now.ToString("yyyyMMdd") & ".xlsx"
         Else
             MessageBox.Show("This export format is not yet implemented.", "Format Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
@@ -86,10 +89,93 @@
         If sfd.ShowDialog() = DialogResult.OK Then
             If format.StartsWith("CSV") Then
                 ExportToCSV(sfd.FileName, dateRangeText)
-            Else
+            ElseIf format = "HTML" Then
                 ExportToHTML(sfd.FileName, dateRangeText)
+            ElseIf format.StartsWith("Excel") Then
+                ExportToExcel(sfd.FileName, dateRangeText)
             End If
         End If
+    End Sub
+
+    Private Sub ExportToExcel(filePath As String, dateRangeText As String)
+        Dim excelApp As Object = Nothing
+        Dim workbook As Object = Nothing
+        Dim sheet As Object = Nothing
+
+        Try
+            excelApp = CreateObject("Excel.Application")
+            workbook = excelApp.Workbooks.Add()
+            sheet = workbook.Sheets(1)
+            sheet.Name = "Sales Report"
+
+            ' Headers
+            sheet.Cells(1, 1).Value = "Sales Report"
+            sheet.Cells(2, 1).Value = "Range: " & dateRangeText
+            sheet.Cells(3, 1).Value = "Generated: " & DateTime.Now.ToString("f")
+
+            Dim rowOffset As Integer = 5
+            For i As Integer = 0 To lvSalesReport.Columns.Count - 1
+                sheet.Cells(rowOffset, i + 1).Value = lvSalesReport.Columns(i).Text
+                sheet.Cells(rowOffset, i + 1).Font.Bold = True
+            Next
+
+            ' Data
+            Dim currentExcelRow As Integer = rowOffset + 1
+            For Each item As ListViewItem In lvSalesReport.Items
+                sheet.Cells(currentExcelRow, 1).Value = item.SubItems(0).Text ' Index
+                sheet.Cells(currentExcelRow, 2).Value = item.SubItems(1).Text ' Name
+
+                ' Price (Col 3 / C)
+                Dim price As Double = 0
+                Double.TryParse(item.SubItems(2).Text.Replace("₱", "").Replace(",", "").Trim(), price)
+                sheet.Cells(currentExcelRow, 3).Value = price
+
+                ' Units (Col 4 / D)
+                Dim units As Integer = 0
+                Integer.TryParse(item.SubItems(3).Text, units)
+                sheet.Cells(currentExcelRow, 4).Value = units
+
+                ' Revenue Formula (Col 5 / E): Price * Units
+                sheet.Cells(currentExcelRow, 5).Formula = $"=C{currentExcelRow}*D{currentExcelRow}"
+
+                ' Last Sold (Col 6 / F)
+                sheet.Cells(currentExcelRow, 6).Value = item.SubItems(5).Text
+
+                currentExcelRow += 1
+            Next
+
+            ' Summary
+            Dim lastDataRow As Integer = currentExcelRow - 1
+            currentExcelRow += 1
+            sheet.Cells(currentExcelRow, 3).Value = "TOTALS:"
+            sheet.Cells(currentExcelRow, 3).Font.Bold = True
+
+            ' Total Units Sold Formula (D)
+            sheet.Cells(currentExcelRow, 4).Formula = $"=SUM(D{rowOffset + 1}:D{lastDataRow})"
+            sheet.Cells(currentExcelRow, 4).Font.Bold = True
+
+            ' Total Revenue Formula (E)
+            sheet.Cells(currentExcelRow, 5).Formula = $"=SUM(E{rowOffset + 1}:E{lastDataRow})"
+            sheet.Cells(currentExcelRow, 5).Font.Bold = True
+
+            ' Formatting
+            sheet.Columns("C:C").NumberFormat = "₱#,##0.00"
+            sheet.Columns("E:E").NumberFormat = "₱#,##0.00"
+            sheet.Columns("A:F").AutoFit()
+
+            workbook.SaveAs(filePath)
+            MessageBox.Show("Excel report exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Catch ex As Exception
+            MessageBox.Show("Error exporting to Excel: " & ex.Message & vbCrLf & "Make sure Microsoft Excel is installed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If workbook IsNot Nothing Then workbook.Close(False)
+            If excelApp IsNot Nothing Then excelApp.Quit()
+
+            If sheet IsNot Nothing Then Runtime.InteropServices.Marshal.ReleaseComObject(sheet)
+            If workbook IsNot Nothing Then Runtime.InteropServices.Marshal.ReleaseComObject(workbook)
+            If excelApp IsNot Nothing Then Runtime.InteropServices.Marshal.ReleaseComObject(excelApp)
+        End Try
     End Sub
 
     Private Sub ExportToHTML(filePath As String, dateRangeText As String)

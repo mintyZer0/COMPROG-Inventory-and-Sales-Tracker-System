@@ -82,3 +82,7 @@ $RECYCLE.BIN/
 # BROWSER-SPECIFIC FILES
 # .DS_Store is for macOS
 .DS_Store
+
+# Documentation and Worktrees
+docs/
+.worktrees/

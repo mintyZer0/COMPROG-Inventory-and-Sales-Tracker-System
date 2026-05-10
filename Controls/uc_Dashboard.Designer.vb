@@ -70,7 +70,7 @@ Partial Class uc_Dashboard
         MaterialLabel1.AutoSize = True
         MaterialLabel1.Depth = 0
         MaterialLabel1.Font = New Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel)
-        MaterialLabel1.Location = New Point(39, 25)
+        MaterialLabel1.Location = New Point(44, 25)
         MaterialLabel1.MouseState = MaterialSkin.MouseState.HOVER
         MaterialLabel1.Name = "MaterialLabel1"
         MaterialLabel1.Size = New Size(102, 19)
@@ -103,7 +103,7 @@ Partial Class uc_Dashboard
         MaterialCard2.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard2.Name = "MaterialCard2"
         MaterialCard2.Padding = New Padding(14)
-        MaterialCard2.Size = New Size(180, 100)
+        MaterialCard2.Size = New Size(191, 100)
         MaterialCard2.TabIndex = 3
         ' 
         ' pnlTotalRevenue
@@ -111,7 +111,7 @@ Partial Class uc_Dashboard
         pnlTotalRevenue.BackColor = Color.LightGreen
         pnlTotalRevenue.Location = New Point(0, 0)
         pnlTotalRevenue.Name = "pnlTotalRevenue"
-        pnlTotalRevenue.Size = New Size(180, 14)
+        pnlTotalRevenue.Size = New Size(191, 14)
         pnlTotalRevenue.TabIndex = 5
         ' 
         ' lblTextInventoryCount
@@ -120,7 +120,7 @@ Partial Class uc_Dashboard
         lblTextInventoryCount.AutoSize = True
         lblTextInventoryCount.Depth = 0
         lblTextInventoryCount.Font = New Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel)
-        lblTextInventoryCount.Location = New Point(39, 25)
+        lblTextInventoryCount.Location = New Point(41, 25)
         lblTextInventoryCount.MouseState = MaterialSkin.MouseState.HOVER
         lblTextInventoryCount.Name = "lblTextInventoryCount"
         lblTextInventoryCount.Size = New Size(112, 19)
@@ -133,7 +133,7 @@ Partial Class uc_Dashboard
         lblInventoryCount.AutoSize = True
         lblInventoryCount.Depth = 0
         lblInventoryCount.Font = New Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel)
-        lblInventoryCount.Location = New Point(85, 55)
+        lblInventoryCount.Location = New Point(90, 55)
         lblInventoryCount.MouseState = MaterialSkin.MouseState.HOVER
         lblInventoryCount.Name = "lblInventoryCount"
         lblInventoryCount.Size = New Size(10, 19)
@@ -148,12 +148,12 @@ Partial Class uc_Dashboard
         MaterialCard3.Controls.Add(lblInventoryCount)
         MaterialCard3.Depth = 0
         MaterialCard3.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
-        MaterialCard3.Location = New Point(214, 14)
+        MaterialCard3.Location = New Point(222, 15)
         MaterialCard3.Margin = New Padding(14)
         MaterialCard3.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard3.Name = "MaterialCard3"
         MaterialCard3.Padding = New Padding(14)
-        MaterialCard3.Size = New Size(190, 100)
+        MaterialCard3.Size = New Size(195, 100)
         MaterialCard3.TabIndex = 4
         ' 
         ' pnlInventoryCount
@@ -161,7 +161,7 @@ Partial Class uc_Dashboard
         pnlInventoryCount.BackColor = Color.FromArgb(CByte(200), CByte(230), CByte(240))
         pnlInventoryCount.Location = New Point(0, 0)
         pnlInventoryCount.Name = "pnlInventoryCount"
-        pnlInventoryCount.Size = New Size(192, 14)
+        pnlInventoryCount.Size = New Size(195, 14)
         pnlInventoryCount.TabIndex = 5
         ' 
         ' MaterialLabel5
@@ -170,7 +170,7 @@ Partial Class uc_Dashboard
         MaterialLabel5.AutoSize = True
         MaterialLabel5.Depth = 0
         MaterialLabel5.Font = New Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel)
-        MaterialLabel5.Location = New Point(45, 25)
+        MaterialLabel5.Location = New Point(47, 25)
         MaterialLabel5.MouseState = MaterialSkin.MouseState.HOVER
         MaterialLabel5.Name = "MaterialLabel5"
         MaterialLabel5.Size = New Size(100, 19)
@@ -199,12 +199,12 @@ Partial Class uc_Dashboard
         MaterialCard4.Controls.Add(lblProductsSold)
         MaterialCard4.Depth = 0
         MaterialCard4.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
-        MaterialCard4.Location = New Point(421, 15)
+        MaterialCard4.Location = New Point(434, 15)
         MaterialCard4.Margin = New Padding(14)
         MaterialCard4.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard4.Name = "MaterialCard4"
         MaterialCard4.Padding = New Padding(14)
-        MaterialCard4.Size = New Size(190, 100)
+        MaterialCard4.Size = New Size(195, 100)
         MaterialCard4.TabIndex = 5
         ' 
         ' pnlProductsSold
@@ -212,7 +212,7 @@ Partial Class uc_Dashboard
         pnlProductsSold.BackColor = Color.FromArgb(CByte(83), CByte(162), CByte(190))
         pnlProductsSold.Location = New Point(0, 0)
         pnlProductsSold.Name = "pnlProductsSold"
-        pnlProductsSold.Size = New Size(190, 14)
+        pnlProductsSold.Size = New Size(195, 14)
         pnlProductsSold.TabIndex = 4
         ' 
         ' MaterialCard5
@@ -224,12 +224,12 @@ Partial Class uc_Dashboard
         MaterialCard5.Controls.Add(lblInventoryValue)
         MaterialCard5.Depth = 0
         MaterialCard5.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
-        MaterialCard5.Location = New Point(631, 15)
+        MaterialCard5.Location = New Point(646, 15)
         MaterialCard5.Margin = New Padding(14)
         MaterialCard5.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard5.Name = "MaterialCard5"
         MaterialCard5.Padding = New Padding(14)
-        MaterialCard5.Size = New Size(180, 100)
+        MaterialCard5.Size = New Size(191, 100)
         MaterialCard5.TabIndex = 6
         ' 
         ' pnlInventoryValue
@@ -237,7 +237,7 @@ Partial Class uc_Dashboard
         pnlInventoryValue.BackColor = Color.FromArgb(CByte(103), CByte(58), CByte(183))
         pnlInventoryValue.Location = New Point(0, 0)
         pnlInventoryValue.Name = "pnlInventoryValue"
-        pnlInventoryValue.Size = New Size(180, 14)
+        pnlInventoryValue.Size = New Size(191, 14)
         pnlInventoryValue.TabIndex = 5
         ' 
         ' lblTextInventoryValue
@@ -246,7 +246,7 @@ Partial Class uc_Dashboard
         lblTextInventoryValue.AutoSize = True
         lblTextInventoryValue.Depth = 0
         lblTextInventoryValue.Font = New Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel)
-        lblTextInventoryValue.Location = New Point(35, 25)
+        lblTextInventoryValue.Location = New Point(40, 25)
         lblTextInventoryValue.MouseState = MaterialSkin.MouseState.HOVER
         lblTextInventoryValue.Name = "lblTextInventoryValue"
         lblTextInventoryValue.Size = New Size(110, 19)
@@ -277,7 +277,7 @@ Partial Class uc_Dashboard
         lbHighestSelling.SelectedIndex = -1
         lbHighestSelling.SelectedItem = Nothing
         lbHighestSelling.ShowScrollBar = True
-        lbHighestSelling.Size = New Size(346, 100)
+        lbHighestSelling.Size = New Size(363, 100)
         lbHighestSelling.Style = MaterialSkin.Controls.MaterialListBox.ListBoxStyle.TwoLine
         lbHighestSelling.TabIndex = 7
         ' 
@@ -294,7 +294,7 @@ Partial Class uc_Dashboard
         MaterialCard7.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard7.Name = "MaterialCard7"
         MaterialCard7.Padding = New Padding(14)
-        MaterialCard7.Size = New Size(392, 150)
+        MaterialCard7.Size = New Size(403, 150)
         MaterialCard7.TabIndex = 8
         ' 
         ' pnlMostSold
@@ -302,7 +302,7 @@ Partial Class uc_Dashboard
         pnlMostSold.BackColor = Color.FromArgb(CByte(255), CByte(193), CByte(7))
         pnlMostSold.Location = New Point(0, 0)
         pnlMostSold.Name = "pnlMostSold"
-        pnlMostSold.Size = New Size(392, 14)
+        pnlMostSold.Size = New Size(403, 14)
         pnlMostSold.TabIndex = 9
         ' 
         ' lblTextMostSold
@@ -327,12 +327,12 @@ Partial Class uc_Dashboard
         MaterialCard_LeastSold.Controls.Add(lbLeastSelling)
         MaterialCard_LeastSold.Depth = 0
         MaterialCard_LeastSold.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
-        MaterialCard_LeastSold.Location = New Point(421, 132)
+        MaterialCard_LeastSold.Location = New Point(434, 132)
         MaterialCard_LeastSold.Margin = New Padding(14)
         MaterialCard_LeastSold.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard_LeastSold.Name = "MaterialCard_LeastSold"
         MaterialCard_LeastSold.Padding = New Padding(14)
-        MaterialCard_LeastSold.Size = New Size(390, 150)
+        MaterialCard_LeastSold.Size = New Size(405, 150)
         MaterialCard_LeastSold.TabIndex = 11
         ' 
         ' pnlLeastSold
@@ -340,7 +340,7 @@ Partial Class uc_Dashboard
         pnlLeastSold.BackColor = Color.FromArgb(CByte(255), CByte(193), CByte(7))
         pnlLeastSold.Location = New Point(0, 0)
         pnlLeastSold.Name = "pnlLeastSold"
-        pnlLeastSold.Size = New Size(390, 14)
+        pnlLeastSold.Size = New Size(405, 14)
         pnlLeastSold.TabIndex = 12
         ' 
         ' lblTextLeastSold
@@ -349,7 +349,7 @@ Partial Class uc_Dashboard
         lblTextLeastSold.Depth = 0
         lblTextLeastSold.Font = New Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel)
         lblTextLeastSold.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2
-        lblTextLeastSold.Location = New Point(158, 17)
+        lblTextLeastSold.Location = New Point(165, 17)
         lblTextLeastSold.MouseState = MaterialSkin.MouseState.HOVER
         lblTextLeastSold.Name = "lblTextLeastSold"
         lblTextLeastSold.Size = New Size(68, 17)
@@ -368,7 +368,7 @@ Partial Class uc_Dashboard
         lbLeastSelling.SelectedIndex = -1
         lbLeastSelling.SelectedItem = Nothing
         lbLeastSelling.ShowScrollBar = True
-        lbLeastSelling.Size = New Size(346, 100)
+        lbLeastSelling.Size = New Size(359, 100)
         lbLeastSelling.Style = MaterialSkin.Controls.MaterialListBox.ListBoxStyle.TwoLine
         lbLeastSelling.TabIndex = 10
         ' 
@@ -385,7 +385,7 @@ Partial Class uc_Dashboard
         MaterialCard_LowStock.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard_LowStock.Name = "MaterialCard_LowStock"
         MaterialCard_LowStock.Padding = New Padding(14)
-        MaterialCard_LowStock.Size = New Size(392, 150)
+        MaterialCard_LowStock.Size = New Size(403, 176)
         MaterialCard_LowStock.TabIndex = 15
         ' 
         ' pnlLowStock_New
@@ -393,7 +393,7 @@ Partial Class uc_Dashboard
         pnlLowStock_New.BackColor = Color.FromArgb(CByte(174), CByte(78), CByte(78))
         pnlLowStock_New.Location = New Point(0, 0)
         pnlLowStock_New.Name = "pnlLowStock_New"
-        pnlLowStock_New.Size = New Size(392, 14)
+        pnlLowStock_New.Size = New Size(403, 14)
         pnlLowStock_New.TabIndex = 16
         ' 
         ' lblTextLowStock_New
@@ -402,7 +402,7 @@ Partial Class uc_Dashboard
         lblTextLowStock_New.Depth = 0
         lblTextLowStock_New.Font = New Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel)
         lblTextLowStock_New.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2
-        lblTextLowStock_New.Location = New Point(150, 17)
+        lblTextLowStock_New.Location = New Point(165, 17)
         lblTextLowStock_New.MouseState = MaterialSkin.MouseState.HOVER
         lblTextLowStock_New.Name = "lblTextLowStock_New"
         lblTextLowStock_New.Size = New Size(65, 17)
@@ -421,7 +421,7 @@ Partial Class uc_Dashboard
         lbLowStock.SelectedIndex = -1
         lbLowStock.SelectedItem = Nothing
         lbLowStock.ShowScrollBar = True
-        lbLowStock.Size = New Size(346, 100)
+        lbLowStock.Size = New Size(363, 126)
         lbLowStock.Style = MaterialSkin.Controls.MaterialListBox.ListBoxStyle.TwoLine
         lbLowStock.TabIndex = 14
         ' 
@@ -434,12 +434,12 @@ Partial Class uc_Dashboard
         MaterialCard_OutOfStock.Controls.Add(lbOutOfStock)
         MaterialCard_OutOfStock.Depth = 0
         MaterialCard_OutOfStock.ForeColor = Color.FromArgb(CByte(222), CByte(0), CByte(0), CByte(0))
-        MaterialCard_OutOfStock.Location = New Point(421, 296)
+        MaterialCard_OutOfStock.Location = New Point(434, 296)
         MaterialCard_OutOfStock.Margin = New Padding(14)
         MaterialCard_OutOfStock.MouseState = MaterialSkin.MouseState.HOVER
         MaterialCard_OutOfStock.Name = "MaterialCard_OutOfStock"
         MaterialCard_OutOfStock.Padding = New Padding(14)
-        MaterialCard_OutOfStock.Size = New Size(390, 150)
+        MaterialCard_OutOfStock.Size = New Size(405, 176)
         MaterialCard_OutOfStock.TabIndex = 19
         ' 
         ' pnlOutOfStock_New
@@ -447,7 +447,7 @@ Partial Class uc_Dashboard
         pnlOutOfStock_New.BackColor = Color.FromArgb(CByte(244), CByte(67), CByte(54))
         pnlOutOfStock_New.Location = New Point(0, 0)
         pnlOutOfStock_New.Name = "pnlOutOfStock_New"
-        pnlOutOfStock_New.Size = New Size(390, 14)
+        pnlOutOfStock_New.Size = New Size(405, 14)
         pnlOutOfStock_New.TabIndex = 20
         ' 
         ' lblTextOutOfStock_New
@@ -456,7 +456,7 @@ Partial Class uc_Dashboard
         lblTextOutOfStock_New.Depth = 0
         lblTextOutOfStock_New.Font = New Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel)
         lblTextOutOfStock_New.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2
-        lblTextOutOfStock_New.Location = New Point(140, 17)
+        lblTextOutOfStock_New.Location = New Point(155, 17)
         lblTextOutOfStock_New.MouseState = MaterialSkin.MouseState.HOVER
         lblTextOutOfStock_New.Name = "lblTextOutOfStock_New"
         lblTextOutOfStock_New.Size = New Size(78, 17)
@@ -475,7 +475,7 @@ Partial Class uc_Dashboard
         lbOutOfStock.SelectedIndex = -1
         lbOutOfStock.SelectedItem = Nothing
         lbOutOfStock.ShowScrollBar = True
-        lbOutOfStock.Size = New Size(346, 100)
+        lbOutOfStock.Size = New Size(359, 126)
         lbOutOfStock.Style = MaterialSkin.Controls.MaterialListBox.ListBoxStyle.TwoLine
         lbOutOfStock.TabIndex = 18
         ' 
@@ -492,7 +492,7 @@ Partial Class uc_Dashboard
         Controls.Add(MaterialCard3)
         Controls.Add(MaterialCard4)
         Name = "uc_Dashboard"
-        Size = New Size(825, 471)
+        Size = New Size(853, 499)
         MaterialCard2.ResumeLayout(False)
         MaterialCard2.PerformLayout()
         MaterialCard3.ResumeLayout(False)

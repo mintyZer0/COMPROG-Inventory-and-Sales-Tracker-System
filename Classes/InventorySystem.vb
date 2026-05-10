@@ -119,8 +119,9 @@ Public Class InventorySystem
         Return productNames(bestSellerIndex)
     End Function
 
-    'Descending order
+    'Descending order (Top 5)
     Public Function GetMostSoldIndices() As Integer()
+        If productCount = 0 Then Return New Integer() {}
         Dim indices(productCount - 1) As Integer
 
         For i As Integer = 0 To productCount - 1
@@ -136,11 +137,16 @@ Public Class InventorySystem
                 End If
             Next
         Next
-        Return indices
+
+        Dim topCount As Integer = Math.Min(5, productCount)
+        Dim topIndices(topCount - 1) As Integer
+        Array.Copy(indices, topIndices, topCount)
+        Return topIndices
     End Function
 
-    'Ascending order
+    'Ascending order (Top 5)
     Public Function GetLeastSoldIndices() As Integer()
+        If productCount = 0 Then Return New Integer() {}
         Dim indices(productCount - 1) As Integer
 
         For i As Integer = 0 To productCount - 1
@@ -156,39 +162,45 @@ Public Class InventorySystem
                 End If
             Next
         Next
-        Return indices
+
+        Dim topCount As Integer = Math.Min(5, productCount)
+        Dim topIndices(topCount - 1) As Integer
+        Array.Copy(indices, topIndices, topCount)
+        Return topIndices
     End Function
 
     'filter for low stock then sort in descending order of sold count
     Public Function GetLowStockIndices() As Integer()
-        Dim lowStockIndices(productCount - 1) As Integer
+        Dim list As New List(Of Integer)
         For i As Integer = 0 To productCount - 1
-            If IsLowStock(i) Then
-                lowStockIndices(i) = i
+            If IsLowStock(i) AndAlso GetProductStock(i) > 0 Then
+                list.Add(i)
             End If
         Next
 
-        For i As Integer = 0 To productCount - 2
-            For j As Integer = 0 To productCount - 2 - i
-                If soldCounts(lowStockIndices(j)) > soldCounts(lowStockIndices(j + 1)) Then
-                    Dim temp = lowStockIndices(j + 1)
-                    lowStockIndices(j + 1) = lowStockIndices(j)
-                    lowStockIndices(j) = temp
-                End If
+        Dim arr = list.ToArray()
+        If arr.Length > 0 Then
+            For i As Integer = 0 To arr.Length - 2
+                For j As Integer = 0 To arr.Length - 2 - i
+                    If soldCounts(arr(j)) < soldCounts(arr(j + 1)) Then
+                        Dim temp = arr(j + 1)
+                        arr(j + 1) = arr(j)
+                        arr(j) = temp
+                    End If
+                Next
             Next
-        Next
-        Return lowStockIndices
+        End If
+        Return arr
     End Function
 
     Public Function GetNoStockIndices() As Integer()
-        Dim noStockIndices(productCount - 1) As Integer
+        Dim list As New List(Of Integer)
         For i As Integer = 0 To productCount - 1
             If GetProductStock(i) = 0 Then
-                noStockIndices(i) = i
+                list.Add(i)
             End If
         Next
-
-        Return noStockIndices
+        Return list.ToArray()
     End Function
 
     Public Function IsLowStock(index As Integer) As Boolean

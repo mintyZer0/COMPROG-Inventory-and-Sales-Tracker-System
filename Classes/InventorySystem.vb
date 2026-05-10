@@ -166,6 +166,7 @@ Public Class InventorySystem
     Public Sub RestockProduct(index As Integer, amount As Integer)
         If index >= 0 AndAlso index < productCount Then
             productStocks(index) += amount
+            RaiseEvent InventoryChange()
         End If
     End Sub
 
@@ -174,6 +175,7 @@ Public Class InventorySystem
             If productStocks(index) >= quantity Then
                 productStocks(index) -= quantity
                 soldCounts(index) += quantity
+                RaiseEvent InventoryChange()
                 Return True
             Else
                 Return False
@@ -181,6 +183,7 @@ Public Class InventorySystem
         End If
         Return False
     End Function
+
 
     ' Functions for Revenue
     Public Function GetItemRevenue(index As Integer) As Double

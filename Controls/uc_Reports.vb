@@ -216,7 +216,7 @@
             csv.AppendLine($"""Total Units Sold"",""{totalUnits}""")
             csv.AppendLine($"""Total Revenue"",""₱{totalRevenue.ToString("N2")}""")
 
-            System.IO.File.WriteAllText(filePath, csv.ToString())
+            System.IO.File.WriteAllText(filePath, csv.ToString(), System.Text.Encoding.UTF8)
             MessageBox.Show("Report exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBox.Show("Error exporting report as CSV: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

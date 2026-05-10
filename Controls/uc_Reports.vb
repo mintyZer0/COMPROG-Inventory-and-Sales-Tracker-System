@@ -149,10 +149,18 @@
                 currentExcelRow += 1
             Next
 
+            ' Summary at Column H (1, 8)
+            Dim lastDataRow As Integer = currentExcelRow - 1
+            sheet.Cells(1, 8).Value = "Total Revenue"
+            sheet.Cells(1, 8).Font.Bold = True
+            sheet.Cells(2, 8).Formula = $"=SUM(E2:E{lastDataRow})"
+            sheet.Cells(2, 8).Font.Bold = True
+            sheet.Cells(2, 8).NumberFormat = "₱#,##0.00"
+
             ' Formatting
             sheet.Columns("C:C").NumberFormat = "₱#,##0.00"
             sheet.Columns("E:E").NumberFormat = "₱#,##0.00"
-            sheet.Columns("A:F").AutoFit()
+            sheet.Columns("A:H").AutoFit()
 
             workbook.SaveAs(filePath)
             MessageBox.Show("Excel report exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)

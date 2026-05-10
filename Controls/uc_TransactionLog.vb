@@ -61,10 +61,10 @@ Public Class uc_TransactionLog
     Private Sub ResizeDetailsColumns()
         If lvDetails.Columns.Count >= 4 Then
             Dim totalWidth As Integer = lvDetails.ClientSize.Width
-            lvDetails.Columns(0).Width = totalWidth * 0.3
-            lvDetails.Columns(1).Width = totalWidth * 0.18
-            lvDetails.Columns(2).Width = totalWidth * 0.25
-            lvDetails.Columns(3).Width = totalWidth * 0.27
+            lvDetails.Columns(0).Width = totalWidth * 0.5
+            lvDetails.Columns(1).Width = totalWidth * 0.15
+            lvDetails.Columns(2).Width = totalWidth * 0.15
+            lvDetails.Columns(3).Width = totalWidth * 0.2
         End If
     End Sub
 

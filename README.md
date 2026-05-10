@@ -53,6 +53,16 @@ The system expects data in the first 3 columns of the file:
 3. **CSV Quoting**: If a product name contains a comma, wrap the name in double quotes: `"USB-C Cable, 2m"`.
 4. **Capacity**: The system currently supports a maximum of **100 products**.
 
+### Sample CSV Format
+```csv
+Name,Price,Stock
+"Gaming Mouse",1200.50,25
+"Mechanical Keyboard",3500.00,10
+"USB-C Cable, 2m",450.00,50
+"Monitor 24""",8500.75,5
+"Mousepad",150.00,100
+```
+
 ---
 
 ## Technical Stack

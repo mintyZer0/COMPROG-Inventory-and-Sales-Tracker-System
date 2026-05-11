@@ -29,6 +29,11 @@ Public Class Login
         Return username = "Lebron" AndAlso password = "James"
     End Function
 
+    Private Function IsAdminCredentials(username As String, password As String) As Boolean
+        Return username = "Admin" AndAlso password = "Admin"
+    End Function
+
+
     Private Function TryGetSelectedSystem(ByRef selectedSystem As LoginSystem) As Boolean
         If cmbSystem.SelectedItem Is Nothing Then
             Return False
@@ -51,19 +56,18 @@ Public Class Login
         Dim password = txtPassword.Text
         Dim selectedSystem As LoginSystem
 
-        If IsValidCredentials(username, password) Then
-            If Not TryGetSelectedSystem(selectedSystem) Then
-                MessageBox.Show("Please select a system before logging in.", "System Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return
-            End If
+        If Not TryGetSelectedSystem(selectedSystem) Then
+            MessageBox.Show("Please select a system before logging in.", "System Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
 
-            Me.Hide()
-            txtUsername.Text = ""
-            txtPassword.Text = ""
-            cmbSystem.SelectedIndex = -1
+        txtUsername.Text = ""
+        txtPassword.Text = ""
+        cmbSystem.SelectedIndex = -1
 
-            Select Case selectedSystem
-                Case LoginSystem.Inventory
+        Select Case selectedSystem
+            Case LoginSystem.Inventory
+                If (IsAdminCredentials(username, password)) Then
                     Dim inventory As New MainWindow()
                     AddHandler inventory.FormClosed, Sub(s, ev)
                                                          If DirectCast(s, MainWindow).WasLogout Then
@@ -72,21 +76,28 @@ Public Class Login
                                                              Application.Exit()
                                                          End If
                                                      End Sub
+                    Me.Hide()
                     inventory.Show()
-                Case LoginSystem.POS
-                    Dim pos As New POSWindow()
-                    AddHandler pos.FormClosed, Sub(s, ev)
-                                                   If DirectCast(s, POSWindow).WasLogout Then
-                                                       Me.Show()
-                                                   Else
-                                                       Application.Exit()
-                                                   End If
-                                               End Sub
-                    pos.Show()
+                Else
+                    MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+
+            Case LoginSystem.POS
+                    If IsValidCredentials(username, password) Then
+                        Dim pos As New POSWindow()
+                        AddHandler pos.FormClosed, Sub(s, ev)
+                                                       If DirectCast(s, POSWindow).WasLogout Then
+                                                           Me.Show()
+                                                       Else
+                                                           Application.Exit()
+                                                       End If
+                                                   End Sub
+                        Me.Hide()
+                        pos.Show()
+                    Else
+                        MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
             End Select
-        Else
-            MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
     End Sub
 
 End Class
